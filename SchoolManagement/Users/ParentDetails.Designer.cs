@@ -54,6 +54,8 @@
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.ParentRecord = new Krypton.Toolkit.KryptonDataGridView();
+            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            this.Search = new Krypton.Toolkit.KryptonTextBox();
             this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SchoolIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ParentIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,6 +72,7 @@
             this.PasswordColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddressColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.EditColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.DeleteColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel1.SuspendLayout();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
@@ -81,6 +84,8 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.kryptonLabel2);
+            this.panel1.Controls.Add(this.Search);
             this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.kryptonPanel1);
             this.panel1.Controls.Add(this.ParentRecord);
@@ -195,15 +200,51 @@
             this.MothersBloodGroupColumn,
             this.PasswordColumn,
             this.AddressColumn,
-            this.EditColumn});
+            this.EditColumn,
+            this.DeleteColumn});
             this.ParentRecord.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
-            this.ParentRecord.Location = new System.Drawing.Point(17, 155);
+            this.ParentRecord.Location = new System.Drawing.Point(17, 206);
             this.ParentRecord.Name = "ParentRecord";
             this.ParentRecord.ReadOnly = true;
-            this.ParentRecord.Size = new System.Drawing.Size(1115, 515);
+            this.ParentRecord.Size = new System.Drawing.Size(1115, 464);
             this.ParentRecord.StateCommon.Background.Color1 = System.Drawing.Color.White;
             this.ParentRecord.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
             this.ParentRecord.TabIndex = 51;
+            this.ParentRecord.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ParentRecord_CellClick);
+            // 
+            // kryptonLabel2
+            // 
+            this.kryptonLabel2.Location = new System.Drawing.Point(19, 151);
+            this.kryptonLabel2.Name = "kryptonLabel2";
+            this.kryptonLabel2.Size = new System.Drawing.Size(72, 21);
+            this.kryptonLabel2.StateCommon.LongText.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel2.TabIndex = 92;
+            this.kryptonLabel2.Values.Text = "Search :";
+            // 
+            // Search
+            // 
+            this.Search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search.InputControlStyle = Krypton.Toolkit.InputControlStyle.Ribbon;
+            this.Search.Location = new System.Drawing.Point(97, 148);
+            this.Search.MinimumSize = new System.Drawing.Size(0, 31);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(391, 31);
+            this.Search.StateActive.Content.Color1 = System.Drawing.SystemColors.ControlDark;
+            this.Search.StateCommon.Border.Color1 = System.Drawing.SystemColors.ActiveBorder;
+            this.Search.StateCommon.Border.Color2 = System.Drawing.SystemColors.ActiveBorder;
+            this.Search.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.Search.StateCommon.Border.Rounding = 2F;
+            this.Search.StateCommon.Content.Color1 = System.Drawing.Color.Black;
+            this.Search.StateCommon.Content.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Search.TabIndex = 91;
+            this.Search.Text = "Enter Parent\'s Name";
+            this.Search.TextChanged += new System.EventHandler(this.Search_TextChanged);
+            this.Search.Enter += new System.EventHandler(this.Search_Enter);
+            this.Search.Leave += new System.EventHandler(this.Search_Leave);
             // 
             // IdColumn
             // 
@@ -382,6 +423,15 @@
             this.EditColumn.Name = "EditColumn";
             this.EditColumn.ReadOnly = true;
             // 
+            // DeleteColumn
+            // 
+            this.DeleteColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DeleteColumn.HeaderText = "Delete";
+            this.DeleteColumn.Image = ((System.Drawing.Image)(resources.GetObject("DeleteColumn.Image")));
+            this.DeleteColumn.MinimumWidth = 200;
+            this.DeleteColumn.Name = "DeleteColumn";
+            this.DeleteColumn.ReadOnly = true;
+            // 
             // ParentDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -397,6 +447,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.ParentDetails_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
@@ -419,6 +470,8 @@
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
         public Krypton.Toolkit.KryptonDataGridView ParentRecord;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel2;
+        private Krypton.Toolkit.KryptonTextBox Search;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn SchoolIdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ParentIdColumn;
@@ -435,5 +488,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PasswordColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn AddressColumn;
         private System.Windows.Forms.DataGridViewImageColumn EditColumn;
+        private System.Windows.Forms.DataGridViewImageColumn DeleteColumn;
     }
 }

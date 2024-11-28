@@ -45,13 +45,26 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentDetails));
             this.StudentRecord = new Krypton.Toolkit.KryptonDataGridView();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            this.Search = new Krypton.Toolkit.KryptonTextBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.previousBtn = new Krypton.Toolkit.KryptonButton();
+            this.btnBetweenPg = new Krypton.Toolkit.KryptonLabel();
+            this.nextBtn = new Krypton.Toolkit.KryptonButton();
+            this.TotalCount = new Krypton.Toolkit.KryptonLabel();
+            this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudentIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClassIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SchoolIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudentType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Class = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Section = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SectionName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhoneNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FatherName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,18 +72,10 @@
             this.FatherMobile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MotherPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RemainingAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.FeePay = new System.Windows.Forms.DataGridViewButtonColumn();
             this.InvoiceColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonButton1 = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.previousBtn = new Krypton.Toolkit.KryptonButton();
-            this.btnBetweenPg = new Krypton.Toolkit.KryptonLabel();
-            this.nextBtn = new Krypton.Toolkit.KryptonButton();
-            this.TotalCount = new Krypton.Toolkit.KryptonLabel();
+            this.Edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.StudentRecord)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -90,13 +95,15 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.StudentRecord.ColumnHeadersHeight = 25;
             this.StudentRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.IdColumn,
             this.StudentIdColumn,
+            this.Section,
             this.Name,
             this.ClassIdColumn,
             this.SchoolIdColumn,
             this.StudentType,
             this.Class,
-            this.Section,
+            this.SectionName,
             this.Email,
             this.PhoneNumber,
             this.FatherName,
@@ -104,18 +111,168 @@
             this.FatherMobile,
             this.MotherPhone,
             this.RemainingAmountColumn,
-            this.Edit,
             this.FeePay,
-            this.InvoiceColumn});
+            this.InvoiceColumn,
+            this.Edit,
+            this.Delete});
             this.StudentRecord.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
-            this.StudentRecord.Location = new System.Drawing.Point(17, 155);
+            this.StudentRecord.Location = new System.Drawing.Point(17, 207);
             this.StudentRecord.Name = "StudentRecord";
             this.StudentRecord.ReadOnly = true;
-            this.StudentRecord.Size = new System.Drawing.Size(1115, 515);
+            this.StudentRecord.Size = new System.Drawing.Size(1115, 463);
             this.StudentRecord.StateCommon.Background.Color1 = System.Drawing.Color.White;
             this.StudentRecord.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
             this.StudentRecord.TabIndex = 18;
+            this.StudentRecord.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentRecord_CellClick);
             this.StudentRecord.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StudentRecord_CellContentClick);
+            // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kryptonPanel1.Controls.Add(this.kryptonButton1);
+            this.kryptonPanel1.Controls.Add(this.kryptonLabel1);
+            this.kryptonPanel1.Location = new System.Drawing.Point(17, 21);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(1115, 97);
+            this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.White;
+            this.kryptonPanel1.TabIndex = 19;
+            // 
+            // kryptonButton1
+            // 
+            this.kryptonButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.kryptonButton1.Location = new System.Drawing.Point(943, 32);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.Size = new System.Drawing.Size(109, 33);
+            this.kryptonButton1.StateCommon.Back.Color1 = System.Drawing.Color.DodgerBlue;
+            this.kryptonButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonButton1.TabIndex = 1;
+            this.kryptonButton1.Values.Text = "Add Record";
+            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
+            // 
+            // kryptonLabel1
+            // 
+            this.kryptonLabel1.Location = new System.Drawing.Point(12, 32);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(171, 29);
+            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel1.TabIndex = 0;
+            this.kryptonLabel1.Values.Text = "Student Details";
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.kryptonLabel2);
+            this.panel1.Controls.Add(this.Search);
+            this.panel1.Controls.Add(this.panel7);
+            this.panel1.Controls.Add(this.kryptonPanel1);
+            this.panel1.Controls.Add(this.StudentRecord);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1149, 737);
+            this.panel1.TabIndex = 20;
+            // 
+            // kryptonLabel2
+            // 
+            this.kryptonLabel2.Location = new System.Drawing.Point(20, 150);
+            this.kryptonLabel2.Name = "kryptonLabel2";
+            this.kryptonLabel2.Size = new System.Drawing.Size(72, 21);
+            this.kryptonLabel2.StateCommon.LongText.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel2.TabIndex = 88;
+            this.kryptonLabel2.Values.Text = "Search :";
+            // 
+            // Search
+            // 
+            this.Search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search.InputControlStyle = Krypton.Toolkit.InputControlStyle.Ribbon;
+            this.Search.Location = new System.Drawing.Point(98, 147);
+            this.Search.MinimumSize = new System.Drawing.Size(0, 31);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(391, 31);
+            this.Search.StateActive.Content.Color1 = System.Drawing.SystemColors.ControlDark;
+            this.Search.StateCommon.Border.Color1 = System.Drawing.SystemColors.ActiveBorder;
+            this.Search.StateCommon.Border.Color2 = System.Drawing.SystemColors.ActiveBorder;
+            this.Search.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.Search.StateCommon.Border.Rounding = 2F;
+            this.Search.StateCommon.Content.Color1 = System.Drawing.Color.Black;
+            this.Search.StateCommon.Content.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Search.TabIndex = 87;
+            this.Search.Text = "Enter Student Name";
+            this.Search.TextChanged += new System.EventHandler(this.Search_TextChanged);
+            this.Search.Enter += new System.EventHandler(this.Search_Enter);
+            this.Search.Leave += new System.EventHandler(this.Search_Leave);
+            // 
+            // panel7
+            // 
+            this.panel7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel7.Controls.Add(this.previousBtn);
+            this.panel7.Controls.Add(this.btnBetweenPg);
+            this.panel7.Controls.Add(this.nextBtn);
+            this.panel7.Controls.Add(this.TotalCount);
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel7.Location = new System.Drawing.Point(0, 676);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1149, 61);
+            this.panel7.TabIndex = 50;
+            // 
+            // previousBtn
+            // 
+            this.previousBtn.Location = new System.Drawing.Point(317, 18);
+            this.previousBtn.Name = "previousBtn";
+            this.previousBtn.Size = new System.Drawing.Size(80, 25);
+            this.previousBtn.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.previousBtn.StateCommon.Border.Rounding = 1F;
+            this.previousBtn.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.previousBtn.TabIndex = 33;
+            this.previousBtn.Values.Text = "< Prev";
+            this.previousBtn.Click += new System.EventHandler(this.previousBtn_Click);
+            // 
+            // btnBetweenPg
+            // 
+            this.btnBetweenPg.Location = new System.Drawing.Point(463, 19);
+            this.btnBetweenPg.Name = "btnBetweenPg";
+            this.btnBetweenPg.Size = new System.Drawing.Size(55, 20);
+            this.btnBetweenPg.TabIndex = 29;
+            this.btnBetweenPg.Values.Text = "Pages: 0";
+            // 
+            // nextBtn
+            // 
+            this.nextBtn.Location = new System.Drawing.Point(754, 18);
+            this.nextBtn.Name = "nextBtn";
+            this.nextBtn.Size = new System.Drawing.Size(80, 25);
+            this.nextBtn.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.nextBtn.StateCommon.Border.Rounding = 1F;
+            this.nextBtn.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nextBtn.TabIndex = 33;
+            this.nextBtn.Values.Text = "Next >";
+            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
+            // 
+            // TotalCount
+            // 
+            this.TotalCount.Location = new System.Drawing.Point(609, 19);
+            this.TotalCount.Name = "TotalCount";
+            this.TotalCount.Size = new System.Drawing.Size(13, 20);
+            this.TotalCount.TabIndex = 29;
+            this.TotalCount.Values.Text = ".";
+            // 
+            // IdColumn
+            // 
+            this.IdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IdColumn.HeaderText = "Id";
+            this.IdColumn.MinimumWidth = 200;
+            this.IdColumn.Name = "IdColumn";
+            this.IdColumn.ReadOnly = true;
+            this.IdColumn.Visible = false;
             // 
             // StudentIdColumn
             // 
@@ -128,6 +285,15 @@
             this.StudentIdColumn.Name = "StudentIdColumn";
             this.StudentIdColumn.ReadOnly = true;
             this.StudentIdColumn.Visible = false;
+            // 
+            // Section
+            // 
+            this.Section.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Section.HeaderText = "SectionId";
+            this.Section.MinimumWidth = 200;
+            this.Section.Name = "Section";
+            this.Section.ReadOnly = true;
+            this.Section.Visible = false;
             // 
             // Name
             // 
@@ -183,15 +349,15 @@
             this.Class.Name = "Class";
             this.Class.ReadOnly = true;
             // 
-            // Section
+            // SectionName
             // 
-            this.Section.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SectionName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Section.DefaultCellStyle = dataGridViewCellStyle8;
-            this.Section.HeaderText = "Section";
-            this.Section.MinimumWidth = 200;
-            this.Section.Name = "Section";
-            this.Section.ReadOnly = true;
+            this.SectionName.DefaultCellStyle = dataGridViewCellStyle8;
+            this.SectionName.HeaderText = "Section";
+            this.SectionName.MinimumWidth = 200;
+            this.SectionName.Name = "SectionName";
+            this.SectionName.ReadOnly = true;
             // 
             // Email
             // 
@@ -264,17 +430,6 @@
             this.RemainingAmountColumn.ReadOnly = true;
             this.RemainingAmountColumn.Visible = false;
             // 
-            // Edit
-            // 
-            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Edit.HeaderText = "Edit";
-            this.Edit.Image = ((System.Drawing.Image)(resources.GetObject("Edit.Image")));
-            this.Edit.MinimumWidth = 200;
-            this.Edit.Name = "Edit";
-            this.Edit.ReadOnly = true;
-            this.Edit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Edit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
             // FeePay
             // 
             this.FeePay.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -296,108 +451,25 @@
             this.InvoiceColumn.Text = "Invoice";
             this.InvoiceColumn.UseColumnTextForButtonValue = true;
             // 
-            // kryptonPanel1
+            // Edit
             // 
-            this.kryptonPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kryptonPanel1.Controls.Add(this.kryptonButton1);
-            this.kryptonPanel1.Controls.Add(this.kryptonLabel1);
-            this.kryptonPanel1.Location = new System.Drawing.Point(17, 21);
-            this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(1115, 97);
-            this.kryptonPanel1.StateCommon.Color1 = System.Drawing.Color.White;
-            this.kryptonPanel1.TabIndex = 19;
+            this.Edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Edit.HeaderText = "Edit";
+            this.Edit.Image = ((System.Drawing.Image)(resources.GetObject("Edit.Image")));
+            this.Edit.MinimumWidth = 200;
+            this.Edit.Name = "Edit";
+            this.Edit.ReadOnly = true;
+            this.Edit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Edit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
-            // kryptonButton1
+            // Delete
             // 
-            this.kryptonButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonButton1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.kryptonButton1.Location = new System.Drawing.Point(943, 32);
-            this.kryptonButton1.Name = "kryptonButton1";
-            this.kryptonButton1.Size = new System.Drawing.Size(109, 33);
-            this.kryptonButton1.StateCommon.Back.Color1 = System.Drawing.Color.DodgerBlue;
-            this.kryptonButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonButton1.TabIndex = 1;
-            this.kryptonButton1.Values.Text = "Add Record";
-            this.kryptonButton1.Click += new System.EventHandler(this.kryptonButton1_Click);
-            // 
-            // kryptonLabel1
-            // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(12, 32);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(171, 29);
-            this.kryptonLabel1.StateCommon.ShortText.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kryptonLabel1.TabIndex = 0;
-            this.kryptonLabel1.Values.Text = "Student Details";
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.panel7);
-            this.panel1.Controls.Add(this.kryptonPanel1);
-            this.panel1.Controls.Add(this.StudentRecord);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1149, 737);
-            this.panel1.TabIndex = 20;
-            // 
-            // panel7
-            // 
-            this.panel7.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel7.Controls.Add(this.previousBtn);
-            this.panel7.Controls.Add(this.btnBetweenPg);
-            this.panel7.Controls.Add(this.nextBtn);
-            this.panel7.Controls.Add(this.TotalCount);
-            this.panel7.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel7.Location = new System.Drawing.Point(0, 676);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1149, 61);
-            this.panel7.TabIndex = 50;
-            // 
-            // previousBtn
-            // 
-            this.previousBtn.Location = new System.Drawing.Point(317, 18);
-            this.previousBtn.Name = "previousBtn";
-            this.previousBtn.Size = new System.Drawing.Size(80, 25);
-            this.previousBtn.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.previousBtn.StateCommon.Border.Rounding = 1F;
-            this.previousBtn.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.previousBtn.TabIndex = 33;
-            this.previousBtn.Values.Text = "< Prev";
-            this.previousBtn.Click += new System.EventHandler(this.previousBtn_Click);
-            // 
-            // btnBetweenPg
-            // 
-            this.btnBetweenPg.Location = new System.Drawing.Point(463, 19);
-            this.btnBetweenPg.Name = "btnBetweenPg";
-            this.btnBetweenPg.Size = new System.Drawing.Size(55, 20);
-            this.btnBetweenPg.TabIndex = 29;
-            this.btnBetweenPg.Values.Text = "Pages: 0";
-            // 
-            // nextBtn
-            // 
-            this.nextBtn.Location = new System.Drawing.Point(754, 18);
-            this.nextBtn.Name = "nextBtn";
-            this.nextBtn.Size = new System.Drawing.Size(80, 25);
-            this.nextBtn.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.nextBtn.StateCommon.Border.Rounding = 1F;
-            this.nextBtn.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nextBtn.TabIndex = 33;
-            this.nextBtn.Values.Text = "Next >";
-            this.nextBtn.Click += new System.EventHandler(this.nextBtn_Click);
-            // 
-            // TotalCount
-            // 
-            this.TotalCount.Location = new System.Drawing.Point(609, 19);
-            this.TotalCount.Name = "TotalCount";
-            this.TotalCount.Size = new System.Drawing.Size(13, 20);
-            this.TotalCount.TabIndex = 29;
-            this.TotalCount.Values.Text = ".";
+            this.Delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Delete.HeaderText = "Delete";
+            this.Delete.Image = ((System.Drawing.Image)(resources.GetObject("Delete.Image")));
+            this.Delete.MinimumWidth = 200;
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
             // 
             // StudentDetails
             // 
@@ -418,6 +490,7 @@
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.ResumeLayout(false);
@@ -431,13 +504,22 @@
         private ComponentFactory.Krypton.Toolkit.KryptonLabel kryptonLabel1;
         private ComponentFactory.Krypton.Toolkit.KryptonButton kryptonButton1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel7;
+        private Krypton.Toolkit.KryptonButton previousBtn;
+        private Krypton.Toolkit.KryptonLabel btnBetweenPg;
+        private Krypton.Toolkit.KryptonButton nextBtn;
+        private Krypton.Toolkit.KryptonLabel TotalCount;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel2;
+        private Krypton.Toolkit.KryptonTextBox Search;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StudentIdColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Section;
         private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassIdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn SchoolIdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn StudentType;
         private System.Windows.Forms.DataGridViewTextBoxColumn Class;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Section;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SectionName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn FatherName;
@@ -445,13 +527,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FatherMobile;
         private System.Windows.Forms.DataGridViewTextBoxColumn MotherPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn RemainingAmountColumn;
-        private System.Windows.Forms.DataGridViewImageColumn Edit;
         private System.Windows.Forms.DataGridViewButtonColumn FeePay;
         private System.Windows.Forms.DataGridViewButtonColumn InvoiceColumn;
-        private System.Windows.Forms.Panel panel7;
-        private Krypton.Toolkit.KryptonButton previousBtn;
-        private Krypton.Toolkit.KryptonLabel btnBetweenPg;
-        private Krypton.Toolkit.KryptonButton nextBtn;
-        private Krypton.Toolkit.KryptonLabel TotalCount;
+        private System.Windows.Forms.DataGridViewImageColumn Edit;
+        private System.Windows.Forms.DataGridViewImageColumn Delete;
     }
 }

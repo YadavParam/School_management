@@ -28,24 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.previousBtn = new Krypton.Toolkit.KryptonButton();
-            this.btnBetweenPg = new Krypton.Toolkit.KryptonLabel();
-            this.nextBtn = new Krypton.Toolkit.KryptonButton();
-            this.TotalCount = new Krypton.Toolkit.KryptonLabel();
-            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
-            this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.AccountsMonthWiseRecord = new Krypton.Toolkit.KryptonDataGridView();
             this.SchoolIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StudentIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,17 +49,28 @@
             this.TotalAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalPaidAmountColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LatestStatusColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.previousBtn = new Krypton.Toolkit.KryptonButton();
+            this.btnBetweenPg = new Krypton.Toolkit.KryptonLabel();
+            this.nextBtn = new Krypton.Toolkit.KryptonButton();
+            this.TotalCount = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            this.Search = new Krypton.Toolkit.KryptonTextBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountsMonthWiseRecord)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AccountsMonthWiseRecord)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.kryptonLabel2);
+            this.panel1.Controls.Add(this.Search);
             this.panel1.Controls.Add(this.AccountsMonthWiseRecord);
             this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.kryptonPanel1);
@@ -75,6 +79,130 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1149, 737);
             this.panel1.TabIndex = 0;
+            // 
+            // AccountsMonthWiseRecord
+            // 
+            this.AccountsMonthWiseRecord.AllowUserToAddRows = false;
+            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.White;
+            this.AccountsMonthWiseRecord.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
+            this.AccountsMonthWiseRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AccountsMonthWiseRecord.ColumnHeadersHeight = 25;
+            this.AccountsMonthWiseRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SchoolIdColumn,
+            this.StudentIdColumn,
+            this.SectionIdColumn,
+            this.ClassIdColumn,
+            this.StudentColumn,
+            this.ClassColumn,
+            this.TotalAmountColumn,
+            this.TotalPaidAmountColumn,
+            this.LatestStatusColumn});
+            this.AccountsMonthWiseRecord.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
+            this.AccountsMonthWiseRecord.Location = new System.Drawing.Point(17, 202);
+            this.AccountsMonthWiseRecord.Name = "AccountsMonthWiseRecord";
+            this.AccountsMonthWiseRecord.ReadOnly = true;
+            this.AccountsMonthWiseRecord.Size = new System.Drawing.Size(1115, 468);
+            this.AccountsMonthWiseRecord.StateCommon.Background.Color1 = System.Drawing.Color.White;
+            this.AccountsMonthWiseRecord.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
+            this.AccountsMonthWiseRecord.TabIndex = 58;
+            // 
+            // SchoolIdColumn
+            // 
+            this.SchoolIdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SchoolIdColumn.DefaultCellStyle = dataGridViewCellStyle32;
+            this.SchoolIdColumn.HeaderText = "SchoolId";
+            this.SchoolIdColumn.MinimumWidth = 200;
+            this.SchoolIdColumn.Name = "SchoolIdColumn";
+            this.SchoolIdColumn.ReadOnly = true;
+            this.SchoolIdColumn.Visible = false;
+            // 
+            // StudentIdColumn
+            // 
+            this.StudentIdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.StudentIdColumn.DefaultCellStyle = dataGridViewCellStyle33;
+            this.StudentIdColumn.HeaderText = "StudentId";
+            this.StudentIdColumn.MinimumWidth = 200;
+            this.StudentIdColumn.Name = "StudentIdColumn";
+            this.StudentIdColumn.ReadOnly = true;
+            this.StudentIdColumn.Visible = false;
+            // 
+            // SectionIdColumn
+            // 
+            this.SectionIdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SectionIdColumn.DefaultCellStyle = dataGridViewCellStyle34;
+            this.SectionIdColumn.HeaderText = "SectionId";
+            this.SectionIdColumn.MinimumWidth = 200;
+            this.SectionIdColumn.Name = "SectionIdColumn";
+            this.SectionIdColumn.ReadOnly = true;
+            this.SectionIdColumn.Visible = false;
+            // 
+            // ClassIdColumn
+            // 
+            this.ClassIdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ClassIdColumn.DefaultCellStyle = dataGridViewCellStyle35;
+            this.ClassIdColumn.HeaderText = "ClassId";
+            this.ClassIdColumn.MinimumWidth = 200;
+            this.ClassIdColumn.Name = "ClassIdColumn";
+            this.ClassIdColumn.ReadOnly = true;
+            this.ClassIdColumn.Visible = false;
+            // 
+            // StudentColumn
+            // 
+            this.StudentColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.StudentColumn.DefaultCellStyle = dataGridViewCellStyle36;
+            this.StudentColumn.HeaderText = "Student";
+            this.StudentColumn.MinimumWidth = 200;
+            this.StudentColumn.Name = "StudentColumn";
+            this.StudentColumn.ReadOnly = true;
+            // 
+            // ClassColumn
+            // 
+            this.ClassColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ClassColumn.DefaultCellStyle = dataGridViewCellStyle37;
+            this.ClassColumn.HeaderText = "Class";
+            this.ClassColumn.MinimumWidth = 200;
+            this.ClassColumn.Name = "ClassColumn";
+            this.ClassColumn.ReadOnly = true;
+            // 
+            // TotalAmountColumn
+            // 
+            this.TotalAmountColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TotalAmountColumn.DefaultCellStyle = dataGridViewCellStyle38;
+            this.TotalAmountColumn.HeaderText = "Total Amount";
+            this.TotalAmountColumn.MinimumWidth = 200;
+            this.TotalAmountColumn.Name = "TotalAmountColumn";
+            this.TotalAmountColumn.ReadOnly = true;
+            // 
+            // TotalPaidAmountColumn
+            // 
+            this.TotalPaidAmountColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.TotalPaidAmountColumn.DefaultCellStyle = dataGridViewCellStyle39;
+            this.TotalPaidAmountColumn.HeaderText = "Total Paid Amount";
+            this.TotalPaidAmountColumn.MinimumWidth = 200;
+            this.TotalPaidAmountColumn.Name = "TotalPaidAmountColumn";
+            this.TotalPaidAmountColumn.ReadOnly = true;
+            // 
+            // LatestStatusColumn
+            // 
+            this.LatestStatusColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.LatestStatusColumn.DefaultCellStyle = dataGridViewCellStyle40;
+            this.LatestStatusColumn.HeaderText = "Latest Status";
+            this.LatestStatusColumn.MinimumWidth = 200;
+            this.LatestStatusColumn.Name = "LatestStatusColumn";
+            this.LatestStatusColumn.ReadOnly = true;
             // 
             // panel7
             // 
@@ -154,129 +282,39 @@
             this.kryptonLabel1.TabIndex = 0;
             this.kryptonLabel1.Values.Text = "Account\'s Month Wise Details";
             // 
-            // AccountsMonthWiseRecord
+            // kryptonLabel2
             // 
-            this.AccountsMonthWiseRecord.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            this.AccountsMonthWiseRecord.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.AccountsMonthWiseRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.kryptonLabel2.Location = new System.Drawing.Point(18, 148);
+            this.kryptonLabel2.Name = "kryptonLabel2";
+            this.kryptonLabel2.Size = new System.Drawing.Size(72, 21);
+            this.kryptonLabel2.StateCommon.LongText.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel2.TabIndex = 90;
+            this.kryptonLabel2.Values.Text = "Search :";
+            // 
+            // Search
+            // 
+            this.Search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AccountsMonthWiseRecord.ColumnHeadersHeight = 25;
-            this.AccountsMonthWiseRecord.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.SchoolIdColumn,
-            this.StudentIdColumn,
-            this.SectionIdColumn,
-            this.ClassIdColumn,
-            this.StudentColumn,
-            this.ClassColumn,
-            this.TotalAmountColumn,
-            this.TotalPaidAmountColumn,
-            this.LatestStatusColumn});
-            this.AccountsMonthWiseRecord.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnKeystroke;
-            this.AccountsMonthWiseRecord.Location = new System.Drawing.Point(17, 153);
-            this.AccountsMonthWiseRecord.Name = "AccountsMonthWiseRecord";
-            this.AccountsMonthWiseRecord.ReadOnly = true;
-            this.AccountsMonthWiseRecord.Size = new System.Drawing.Size(1115, 517);
-            this.AccountsMonthWiseRecord.StateCommon.Background.Color1 = System.Drawing.Color.White;
-            this.AccountsMonthWiseRecord.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
-            this.AccountsMonthWiseRecord.TabIndex = 58;
-            // 
-            // SchoolIdColumn
-            // 
-            this.SchoolIdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SchoolIdColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.SchoolIdColumn.HeaderText = "SchoolId";
-            this.SchoolIdColumn.MinimumWidth = 200;
-            this.SchoolIdColumn.Name = "SchoolIdColumn";
-            this.SchoolIdColumn.ReadOnly = true;
-            this.SchoolIdColumn.Visible = false;
-            // 
-            // StudentIdColumn
-            // 
-            this.StudentIdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.StudentIdColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.StudentIdColumn.HeaderText = "StudentId";
-            this.StudentIdColumn.MinimumWidth = 200;
-            this.StudentIdColumn.Name = "StudentIdColumn";
-            this.StudentIdColumn.ReadOnly = true;
-            this.StudentIdColumn.Visible = false;
-            // 
-            // SectionIdColumn
-            // 
-            this.SectionIdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SectionIdColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.SectionIdColumn.HeaderText = "SectionId";
-            this.SectionIdColumn.MinimumWidth = 200;
-            this.SectionIdColumn.Name = "SectionIdColumn";
-            this.SectionIdColumn.ReadOnly = true;
-            this.SectionIdColumn.Visible = false;
-            // 
-            // ClassIdColumn
-            // 
-            this.ClassIdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ClassIdColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ClassIdColumn.HeaderText = "ClassId";
-            this.ClassIdColumn.MinimumWidth = 200;
-            this.ClassIdColumn.Name = "ClassIdColumn";
-            this.ClassIdColumn.ReadOnly = true;
-            this.ClassIdColumn.Visible = false;
-            // 
-            // StudentColumn
-            // 
-            this.StudentColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.StudentColumn.DefaultCellStyle = dataGridViewCellStyle6;
-            this.StudentColumn.HeaderText = "Student";
-            this.StudentColumn.MinimumWidth = 200;
-            this.StudentColumn.Name = "StudentColumn";
-            this.StudentColumn.ReadOnly = true;
-            // 
-            // ClassColumn
-            // 
-            this.ClassColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ClassColumn.DefaultCellStyle = dataGridViewCellStyle7;
-            this.ClassColumn.HeaderText = "Class";
-            this.ClassColumn.MinimumWidth = 200;
-            this.ClassColumn.Name = "ClassColumn";
-            this.ClassColumn.ReadOnly = true;
-            // 
-            // TotalAmountColumn
-            // 
-            this.TotalAmountColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TotalAmountColumn.DefaultCellStyle = dataGridViewCellStyle8;
-            this.TotalAmountColumn.HeaderText = "Total Amount";
-            this.TotalAmountColumn.MinimumWidth = 200;
-            this.TotalAmountColumn.Name = "TotalAmountColumn";
-            this.TotalAmountColumn.ReadOnly = true;
-            // 
-            // TotalPaidAmountColumn
-            // 
-            this.TotalPaidAmountColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.TotalPaidAmountColumn.DefaultCellStyle = dataGridViewCellStyle9;
-            this.TotalPaidAmountColumn.HeaderText = "Total Paid Amount";
-            this.TotalPaidAmountColumn.MinimumWidth = 200;
-            this.TotalPaidAmountColumn.Name = "TotalPaidAmountColumn";
-            this.TotalPaidAmountColumn.ReadOnly = true;
-            // 
-            // LatestStatusColumn
-            // 
-            this.LatestStatusColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.LatestStatusColumn.DefaultCellStyle = dataGridViewCellStyle10;
-            this.LatestStatusColumn.HeaderText = "Latest Status";
-            this.LatestStatusColumn.MinimumWidth = 200;
-            this.LatestStatusColumn.Name = "LatestStatusColumn";
-            this.LatestStatusColumn.ReadOnly = true;
+            this.Search.InputControlStyle = Krypton.Toolkit.InputControlStyle.Ribbon;
+            this.Search.Location = new System.Drawing.Point(96, 145);
+            this.Search.MinimumSize = new System.Drawing.Size(0, 31);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(391, 31);
+            this.Search.StateActive.Content.Color1 = System.Drawing.SystemColors.ControlDark;
+            this.Search.StateCommon.Border.Color1 = System.Drawing.SystemColors.ActiveBorder;
+            this.Search.StateCommon.Border.Color2 = System.Drawing.SystemColors.ActiveBorder;
+            this.Search.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.Search.StateCommon.Border.Rounding = 2F;
+            this.Search.StateCommon.Content.Color1 = System.Drawing.Color.Black;
+            this.Search.StateCommon.Content.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Search.TabIndex = 89;
+            this.Search.Text = "Enter Student Name";
+            this.Search.TextChanged += new System.EventHandler(this.Search_TextChanged);
+            this.Search.Enter += new System.EventHandler(this.Search_Enter);
+            this.Search.Leave += new System.EventHandler(this.Search_Leave);
             // 
             // AccountsOfMonthWise
             // 
@@ -293,12 +331,13 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AccountsOfMonthWise_Load);
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AccountsMonthWiseRecord)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AccountsMonthWiseRecord)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -324,5 +363,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalAmountColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPaidAmountColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn LatestStatusColumn;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel2;
+        private Krypton.Toolkit.KryptonTextBox Search;
     }
 }

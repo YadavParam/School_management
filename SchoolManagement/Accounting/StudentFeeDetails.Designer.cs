@@ -28,14 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StudentFeeDetails));
             this.StuFeeDetailsDataGridView = new Krypton.Toolkit.KryptonDataGridView();
+            this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SchoolIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClassNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.YearlyFeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.InstallmentColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.EditColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.DeleteColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.kryptonLabel1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
             this.StudentFee = new ComponentFactory.Krypton.Toolkit.KryptonButton();
@@ -45,13 +52,8 @@
             this.btnBetweenPg = new Krypton.Toolkit.KryptonLabel();
             this.nextBtn = new Krypton.Toolkit.KryptonButton();
             this.TotalCount = new Krypton.Toolkit.KryptonLabel();
-            this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SchoolIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClassNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.YearlyFeeColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.InstallmentColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.EditColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.DeleteColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            this.Search = new Krypton.Toolkit.KryptonTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.StuFeeDetailsDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
@@ -65,12 +67,12 @@
             this.StuFeeDetailsDataGridView.AllowUserToAddRows = false;
             this.StuFeeDetailsDataGridView.AllowUserToResizeColumns = false;
             this.StuFeeDetailsDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.DimGray;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.StuFeeDetailsDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.DimGray;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.LightSkyBlue;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.StuFeeDetailsDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
             this.StuFeeDetailsDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -84,18 +86,91 @@
             this.EditColumn,
             this.DeleteColumn});
             this.StuFeeDetailsDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.StuFeeDetailsDataGridView.Location = new System.Drawing.Point(17, 155);
+            this.StuFeeDetailsDataGridView.Location = new System.Drawing.Point(17, 207);
             this.StuFeeDetailsDataGridView.Name = "StuFeeDetailsDataGridView";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            this.StuFeeDetailsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.StuFeeDetailsDataGridView.Size = new System.Drawing.Size(1115, 515);
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            this.StuFeeDetailsDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle36;
+            this.StuFeeDetailsDataGridView.Size = new System.Drawing.Size(1115, 463);
             this.StuFeeDetailsDataGridView.StateCommon.Background.Color1 = System.Drawing.Color.White;
             this.StuFeeDetailsDataGridView.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
             this.StuFeeDetailsDataGridView.StateCommon.HeaderRow.Content.Color1 = System.Drawing.Color.White;
             this.StuFeeDetailsDataGridView.StateCommon.HeaderRow.Content.Color2 = System.Drawing.Color.White;
             this.StuFeeDetailsDataGridView.TabIndex = 51;
             this.StuFeeDetailsDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.StuFeeDetailsDataGridView_CellClick);
+            // 
+            // IdColumn
+            // 
+            this.IdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.IdColumn.DataPropertyName = "Id";
+            this.IdColumn.HeaderText = "Id";
+            this.IdColumn.MinimumWidth = 200;
+            this.IdColumn.Name = "IdColumn";
+            this.IdColumn.Visible = false;
+            // 
+            // SchoolIdColumn
+            // 
+            this.SchoolIdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SchoolIdColumn.DataPropertyName = "SchoolId";
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SchoolIdColumn.DefaultCellStyle = dataGridViewCellStyle32;
+            this.SchoolIdColumn.HeaderText = "SchoolId";
+            this.SchoolIdColumn.MinimumWidth = 200;
+            this.SchoolIdColumn.Name = "SchoolIdColumn";
+            this.SchoolIdColumn.Visible = false;
+            // 
+            // ClassNameColumn
+            // 
+            this.ClassNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ClassNameColumn.DataPropertyName = "ClassName";
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ClassNameColumn.DefaultCellStyle = dataGridViewCellStyle33;
+            this.ClassNameColumn.HeaderText = "Class Name";
+            this.ClassNameColumn.MinimumWidth = 200;
+            this.ClassNameColumn.Name = "ClassNameColumn";
+            // 
+            // YearlyFeeColumn
+            // 
+            this.YearlyFeeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.YearlyFeeColumn.DataPropertyName = "YearFee";
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.YearlyFeeColumn.DefaultCellStyle = dataGridViewCellStyle34;
+            this.YearlyFeeColumn.HeaderText = "Yearly Fee";
+            this.YearlyFeeColumn.MinimumWidth = 200;
+            this.YearlyFeeColumn.Name = "YearlyFeeColumn";
+            // 
+            // InstallmentColumn
+            // 
+            this.InstallmentColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.InstallmentColumn.DataPropertyName = "Installment";
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.InstallmentColumn.DefaultCellStyle = dataGridViewCellStyle35;
+            this.InstallmentColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.InstallmentColumn.HeaderText = "Installment";
+            this.InstallmentColumn.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.InstallmentColumn.MinimumWidth = 200;
+            this.InstallmentColumn.Name = "InstallmentColumn";
+            this.InstallmentColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.InstallmentColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // EditColumn
+            // 
+            this.EditColumn.HeaderText = "Edit";
+            this.EditColumn.MinimumWidth = 150;
+            this.EditColumn.Name = "EditColumn";
+            this.EditColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.EditColumn.Width = 150;
+            // 
+            // DeleteColumn
+            // 
+            this.DeleteColumn.HeaderText = "Delete";
+            this.DeleteColumn.Image = ((System.Drawing.Image)(resources.GetObject("DeleteColumn.Image")));
+            this.DeleteColumn.MinimumWidth = 150;
+            this.DeleteColumn.Name = "DeleteColumn";
+            this.DeleteColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.DeleteColumn.Width = 150;
             // 
             // kryptonLabel1
             // 
@@ -136,6 +211,8 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.kryptonLabel2);
+            this.panel1.Controls.Add(this.Search);
             this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.kryptonPanel1);
             this.panel1.Controls.Add(this.StuFeeDetailsDataGridView);
@@ -202,78 +279,39 @@
             this.TotalCount.TabIndex = 29;
             this.TotalCount.Values.Text = ".";
             // 
-            // IdColumn
+            // kryptonLabel2
             // 
-            this.IdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.IdColumn.DataPropertyName = "Id";
-            this.IdColumn.HeaderText = "Id";
-            this.IdColumn.MinimumWidth = 200;
-            this.IdColumn.Name = "IdColumn";
-            this.IdColumn.Visible = false;
+            this.kryptonLabel2.Location = new System.Drawing.Point(18, 151);
+            this.kryptonLabel2.Name = "kryptonLabel2";
+            this.kryptonLabel2.Size = new System.Drawing.Size(72, 21);
+            this.kryptonLabel2.StateCommon.LongText.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel2.StateCommon.ShortText.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel2.TabIndex = 90;
+            this.kryptonLabel2.Values.Text = "Search :";
             // 
-            // SchoolIdColumn
+            // Search
             // 
-            this.SchoolIdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SchoolIdColumn.DataPropertyName = "SchoolId";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SchoolIdColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.SchoolIdColumn.HeaderText = "SchoolId";
-            this.SchoolIdColumn.MinimumWidth = 200;
-            this.SchoolIdColumn.Name = "SchoolIdColumn";
-            this.SchoolIdColumn.Visible = false;
-            // 
-            // ClassNameColumn
-            // 
-            this.ClassNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ClassNameColumn.DataPropertyName = "ClassName";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ClassNameColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ClassNameColumn.HeaderText = "Class Name";
-            this.ClassNameColumn.MinimumWidth = 200;
-            this.ClassNameColumn.Name = "ClassNameColumn";
-            // 
-            // YearlyFeeColumn
-            // 
-            this.YearlyFeeColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.YearlyFeeColumn.DataPropertyName = "YearFee";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.YearlyFeeColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.YearlyFeeColumn.HeaderText = "Yearly Fee";
-            this.YearlyFeeColumn.MinimumWidth = 200;
-            this.YearlyFeeColumn.Name = "YearlyFeeColumn";
-            // 
-            // InstallmentColumn
-            // 
-            this.InstallmentColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.InstallmentColumn.DataPropertyName = "Installment";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.InstallmentColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.InstallmentColumn.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
-            this.InstallmentColumn.HeaderText = "Installment";
-            this.InstallmentColumn.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-            this.InstallmentColumn.MinimumWidth = 200;
-            this.InstallmentColumn.Name = "InstallmentColumn";
-            this.InstallmentColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.InstallmentColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // EditColumn
-            // 
-            this.EditColumn.HeaderText = "Edit";
-            this.EditColumn.MinimumWidth = 150;
-            this.EditColumn.Name = "EditColumn";
-            this.EditColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.EditColumn.Width = 150;
-            // 
-            // DeleteColumn
-            // 
-            this.DeleteColumn.HeaderText = "Delete";
-            this.DeleteColumn.Image = ((System.Drawing.Image)(resources.GetObject("DeleteColumn.Image")));
-            this.DeleteColumn.MinimumWidth = 150;
-            this.DeleteColumn.Name = "DeleteColumn";
-            this.DeleteColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.DeleteColumn.Width = 150;
+            this.Search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search.InputControlStyle = Krypton.Toolkit.InputControlStyle.Ribbon;
+            this.Search.Location = new System.Drawing.Point(96, 148);
+            this.Search.MinimumSize = new System.Drawing.Size(0, 31);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(391, 31);
+            this.Search.StateActive.Content.Color1 = System.Drawing.SystemColors.ControlDark;
+            this.Search.StateCommon.Border.Color1 = System.Drawing.SystemColors.ActiveBorder;
+            this.Search.StateCommon.Border.Color2 = System.Drawing.SystemColors.ActiveBorder;
+            this.Search.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.Search.StateCommon.Border.Rounding = 2F;
+            this.Search.StateCommon.Content.Color1 = System.Drawing.Color.Black;
+            this.Search.StateCommon.Content.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Search.TabIndex = 89;
+            this.Search.Text = "Enter Class Name";
+            this.Search.TextChanged += new System.EventHandler(this.Search_TextChanged);
+            this.Search.Enter += new System.EventHandler(this.Search_Enter);
+            this.Search.Leave += new System.EventHandler(this.Search_Leave);
             // 
             // StudentFeeDetails
             // 
@@ -294,6 +332,7 @@
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.ResumeLayout(false);
@@ -320,5 +359,7 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn InstallmentColumn;
         private System.Windows.Forms.DataGridViewButtonColumn EditColumn;
         private System.Windows.Forms.DataGridViewImageColumn DeleteColumn;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel2;
+        private Krypton.Toolkit.KryptonTextBox Search;
     }
 }

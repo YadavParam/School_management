@@ -39,7 +39,7 @@ namespace SchoolManagement
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.Email = new Krypton.Toolkit.KryptonTextBox();
             this.kryptonContextMenu1 = new Krypton.Toolkit.KryptonContextMenu();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.StudentImage = new System.Windows.Forms.PictureBox();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.kryptonLabel4 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel9 = new Krypton.Toolkit.KryptonLabel();
@@ -74,7 +74,7 @@ namespace SchoolManagement
             this.panel9 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel11 = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StudentType)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Class)).BeginInit();
@@ -157,17 +157,16 @@ namespace SchoolManagement
             this.Email.StateCommon.Content.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Email.TabIndex = 29;
             // 
-            // pictureBox1
+            // StudentImage
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(956, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(161, 111);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 50;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.StudentImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.StudentImage.Image = ((System.Drawing.Image)(resources.GetObject("StudentImage.Image")));
+            this.StudentImage.Location = new System.Drawing.Point(956, 23);
+            this.StudentImage.Name = "StudentImage";
+            this.StudentImage.Size = new System.Drawing.Size(161, 111);
+            this.StudentImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.StudentImage.TabIndex = 50;
+            this.StudentImage.TabStop = false;
             // 
             // fileSystemWatcher1
             // 
@@ -285,6 +284,7 @@ namespace SchoolManagement
             this.Class.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Class.StateCommon.ComboBox.Content.Padding = new System.Windows.Forms.Padding(0);
             this.Class.TabIndex = 74;
+            this.Class.SelectedIndexChanged += new System.EventHandler(this.Class_SelectedIndexChanged);
             // 
             // kryptonLabel7
             // 
@@ -353,6 +353,7 @@ namespace SchoolManagement
             this.Birthday.StateCommon.Content.Color1 = System.Drawing.Color.Black;
             this.Birthday.StateCommon.Content.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Birthday.TabIndex = 80;
+            this.Birthday.ValueNullable = new System.DateTime(2024, 11, 27, 16, 19, 48, 0);
             // 
             // kryptonLabel8
             // 
@@ -485,6 +486,7 @@ namespace SchoolManagement
             this.ChooseImage.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChooseImage.TabIndex = 88;
             this.ChooseImage.Values.Text = "Choose Image";
+            this.ChooseImage.Click += new System.EventHandler(this.ChooseImage_Click);
             // 
             // panel1
             // 
@@ -502,7 +504,7 @@ namespace SchoolManagement
             // panel13
             // 
             this.panel13.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel13.Controls.Add(this.pictureBox1);
+            this.panel13.Controls.Add(this.StudentImage);
             this.panel13.Controls.Add(this.ChooseImage);
             this.panel13.Controls.Add(this.kryptonLabel4);
             this.panel13.Dock = System.Windows.Forms.DockStyle.Top;
@@ -516,7 +518,7 @@ namespace SchoolManagement
             this.panel12.AutoSize = true;
             this.panel12.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel12.Controls.Add(this.Student_Register);
-            this.panel12.Location = new System.Drawing.Point(12, 587);
+            this.panel12.Location = new System.Drawing.Point(12, 592);
             this.panel12.Name = "panel12";
             this.panel12.Size = new System.Drawing.Size(117, 38);
             this.panel12.TabIndex = 90;
@@ -673,7 +675,7 @@ namespace SchoolManagement
             this.Text = "x";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Students_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StudentImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StudentType)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Class)).EndInit();
@@ -717,7 +719,7 @@ namespace SchoolManagement
         private Krypton.Toolkit.KryptonLabel kryptonLabel2;
         private Krypton.Toolkit.KryptonTextBox Email;
         private Krypton.Toolkit.KryptonContextMenu kryptonContextMenu1;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox StudentImage;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
         private Krypton.Toolkit.KryptonLabel kryptonLabel4;
         private Krypton.Toolkit.KryptonLabel kryptonLabel9;

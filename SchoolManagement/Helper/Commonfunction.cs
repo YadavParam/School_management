@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using ExcelDataReader;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 using System.Xml;
@@ -20,40 +21,30 @@ namespace SchoolManagement.Helper
     {
         public static DataTable GetDataTabletFromCSVFile(FileInfo file, string inputfilename)
         {
+
+            var csvDataTable = new DataTable();
+            string fileExtension = file.Extension.ToLower();
+
             try
             {
-                var csvDataTable = new DataTable();
-                var csvBody = string.Empty;
-                Stream st = null;
-                st = File.Open(inputfilename, FileMode.Open, FileAccess.ReadWrite);
-                BinaryReader bf = new BinaryReader(st);
-                var binData= bf.ReadBytes(Convert.ToInt32(file.Length));
-                csvBody = Encoding.UTF8.GetString(binData);
-
-                var memoryStream = new MemoryStream();
-                using (var streamWriter = new StreamWriter(memoryStream))
+                if (fileExtension == ".csv")
                 {
-                    streamWriter.Write(csvBody);
-                    streamWriter.Flush();
-                    memoryStream.Position = 0;
-
-                    using (TextFieldParser csvReader = new TextFieldParser(memoryStream))
+                    using (var reader = new StreamReader(inputfilename))
+                    using (var csvReader = new TextFieldParser(reader))
                     {
                         csvReader.SetDelimiters(new string[] { "," });
                         csvReader.HasFieldsEnclosedInQuotes = true;
+
                         var colFields = csvReader.ReadFields();
                         foreach (string column in colFields)
                         {
-                            var datecolumn = new DataColumn(column)
-                            {
-                                AllowDBNull = true
-                            };
-                            csvDataTable.Columns.Add(datecolumn);
+                            csvDataTable.Columns.Add(new DataColumn(column) { AllowDBNull = true });
                         }
+
                         while (!csvReader.EndOfData)
                         {
                             var fieldData = csvReader.ReadFields();
-                            //Making empty value as null
+                           
                             for (int i = 0; i < fieldData.Length; i++)
                             {
                                 if (fieldData[i] == "")
@@ -62,31 +53,69 @@ namespace SchoolManagement.Helper
                                 }
                             }
 
-                            csvDataTable.Rows.Add(fieldData);
+                            if (fieldData.Length == csvDataTable.Columns.Count)
+                            {
+                                csvDataTable.Rows.Add(fieldData);
+                            }
+                            else
+                            {
+                                throw new ArgumentException("Row length does not match column count.");
+                            }
                         }
                     }
-
-                    return csvDataTable;
                 }
+                else if (fileExtension == ".xls" || fileExtension == ".xlsx")
+                {
+                    System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+                    using (var stream = File.Open(inputfilename, FileMode.Open, FileAccess.Read))
+                    {
+                        using (var reader = ExcelReaderFactory.CreateReader(stream))
+                        {
+                            if (reader.Read())
+                            {
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    csvDataTable.Columns.Add(reader.GetString(i));
+                                }
+                            }
+
+                            while (reader.Read())
+                            {
+                                var rowData = new object[reader.FieldCount];
+                                for (int i = 0; i < reader.FieldCount; i++)
+                                {
+                                    rowData[i] = reader.IsDBNull(i) ? null : reader.GetValue(i);
+                                }
+
+                                csvDataTable.Rows.Add(rowData);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    throw new NotSupportedException("Unsupported file format.");
+                }
+
+                return csvDataTable;
             }
             catch (Exception ex)
             {
-                //Log.Debug(ex);
+                // Log the exception as needed
                 throw;
             }
         }
        
+        public static List<CustomDropDownList> GetSuggestionForLeadExcel()
+        {
+            var list = new List<CustomDropDownList>();
 
-            public static List<CustomDropDownList> GetSuggestionForLeadExcel()
-            {
-                var list = new List<CustomDropDownList>();
+            list.Add(new CustomDropDownList { value = "Name", label = "Name" });
+            list.Add(new CustomDropDownList { value = "Email", label = "Email" });
+            list.Add(new CustomDropDownList { value = "PhoneNumber", label = "PhoneNumber" });
+            return list;
 
-                list.Add(new CustomDropDownList { value = "Name", label = "Name" });
-                list.Add(new CustomDropDownList { value = "Email", label = "Email" });
-                list.Add(new CustomDropDownList { value = "PhoneNumber", label = "PhoneNumber" });
-                return list;
-
-            }
+        }
 
         public class CustomDropDownList
         {

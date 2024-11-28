@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ClassRoutine));
             this.classSelect = new Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
@@ -57,6 +57,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
+            this.Search = new Krypton.Toolkit.KryptonTextBox();
             this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClassNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SectionNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -234,12 +236,12 @@
             this.ClassRoutineDataGridView.AllowUserToAddRows = false;
             this.ClassRoutineDataGridView.AllowUserToResizeColumns = false;
             this.ClassRoutineDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClassRoutineDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ClassRoutineDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle19;
             this.ClassRoutineDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -253,13 +255,13 @@
             this.EditColumn,
             this.DeleteColumn});
             this.ClassRoutineDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.ClassRoutineDataGridView.Location = new System.Drawing.Point(17, 236);
+            this.ClassRoutineDataGridView.Location = new System.Drawing.Point(17, 282);
             this.ClassRoutineDataGridView.Name = "ClassRoutineDataGridView";
             this.ClassRoutineDataGridView.ReadOnly = true;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            this.ClassRoutineDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle6;
-            this.ClassRoutineDataGridView.Size = new System.Drawing.Size(1115, 434);
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            this.ClassRoutineDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            this.ClassRoutineDataGridView.Size = new System.Drawing.Size(1115, 388);
             this.ClassRoutineDataGridView.StateCommon.Background.Color1 = System.Drawing.Color.White;
             this.ClassRoutineDataGridView.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
             this.ClassRoutineDataGridView.StateCommon.HeaderRow.Content.Color1 = System.Drawing.Color.White;
@@ -271,6 +273,8 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.kryptonLabel5);
+            this.panel1.Controls.Add(this.Search);
             this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
@@ -411,6 +415,40 @@
             this.panel5.Size = new System.Drawing.Size(557, 70);
             this.panel5.TabIndex = 3;
             // 
+            // kryptonLabel5
+            // 
+            this.kryptonLabel5.Location = new System.Drawing.Point(17, 235);
+            this.kryptonLabel5.Name = "kryptonLabel5";
+            this.kryptonLabel5.Size = new System.Drawing.Size(72, 21);
+            this.kryptonLabel5.StateCommon.LongText.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel5.StateCommon.ShortText.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel5.TabIndex = 94;
+            this.kryptonLabel5.Values.Text = "Search :";
+            // 
+            // Search
+            // 
+            this.Search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search.InputControlStyle = Krypton.Toolkit.InputControlStyle.Ribbon;
+            this.Search.Location = new System.Drawing.Point(95, 232);
+            this.Search.MinimumSize = new System.Drawing.Size(0, 31);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(391, 31);
+            this.Search.StateActive.Content.Color1 = System.Drawing.SystemColors.ControlDark;
+            this.Search.StateCommon.Border.Color1 = System.Drawing.SystemColors.ActiveBorder;
+            this.Search.StateCommon.Border.Color2 = System.Drawing.SystemColors.ActiveBorder;
+            this.Search.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.Search.StateCommon.Border.Rounding = 2F;
+            this.Search.StateCommon.Content.Color1 = System.Drawing.Color.Black;
+            this.Search.StateCommon.Content.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Search.TabIndex = 93;
+            this.Search.Text = "Enter Class Teacher Name";
+            this.Search.TextChanged += new System.EventHandler(this.Search_TextChanged);
+            this.Search.Enter += new System.EventHandler(this.Search_Enter);
+            this.Search.Leave += new System.EventHandler(this.Search_Leave);
+            // 
             // IdColumn
             // 
             this.IdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -419,13 +457,14 @@
             this.IdColumn.MinimumWidth = 200;
             this.IdColumn.Name = "IdColumn";
             this.IdColumn.ReadOnly = true;
+            this.IdColumn.Visible = false;
             // 
             // ClassNameColumn
             // 
             this.ClassNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ClassNameColumn.DataPropertyName = "ClassName";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.ClassNameColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.ClassNameColumn.DefaultCellStyle = dataGridViewCellStyle20;
             this.ClassNameColumn.HeaderText = "Class Name";
             this.ClassNameColumn.MinimumWidth = 200;
             this.ClassNameColumn.Name = "ClassNameColumn";
@@ -435,8 +474,8 @@
             // 
             this.SectionNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.SectionNameColumn.DataPropertyName = "SectionName";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.SectionNameColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.SectionNameColumn.DefaultCellStyle = dataGridViewCellStyle21;
             this.SectionNameColumn.HeaderText = "Section Name";
             this.SectionNameColumn.MinimumWidth = 200;
             this.SectionNameColumn.Name = "SectionNameColumn";
@@ -446,8 +485,8 @@
             // 
             this.SubjectNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.SubjectNameColumn.DataPropertyName = "SubjectName";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.SubjectNameColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.SubjectNameColumn.DefaultCellStyle = dataGridViewCellStyle22;
             this.SubjectNameColumn.HeaderText = "Subject Name";
             this.SubjectNameColumn.MinimumWidth = 200;
             this.SubjectNameColumn.Name = "SubjectNameColumn";
@@ -457,9 +496,9 @@
             // 
             this.TeacherNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.TeacherNameColumn.DataPropertyName = "StaffName";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.TeacherNameColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.TeacherNameColumn.HeaderText = "Teacher Name";
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.TeacherNameColumn.DefaultCellStyle = dataGridViewCellStyle23;
+            this.TeacherNameColumn.HeaderText = "Class Teacher Name";
             this.TeacherNameColumn.MinimumWidth = 200;
             this.TeacherNameColumn.Name = "TeacherNameColumn";
             this.TeacherNameColumn.ReadOnly = true;
@@ -504,6 +543,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.teacherSelect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ClassRoutineDataGridView)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel6.ResumeLayout(false);
@@ -545,6 +585,8 @@
         private Krypton.Toolkit.KryptonLabel btnBetweenPg;
         private Krypton.Toolkit.KryptonButton nextBtn;
         private Krypton.Toolkit.KryptonLabel TotalCount;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel5;
+        private Krypton.Toolkit.KryptonTextBox Search;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassNameColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn SectionNameColumn;

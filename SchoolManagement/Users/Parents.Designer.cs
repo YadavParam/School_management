@@ -71,6 +71,7 @@
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.HiddenIdColumn = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.FatherBloodGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.MotherBloodGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Studentadmission)).BeginInit();
@@ -522,6 +523,7 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.HiddenIdColumn);
             this.panel1.Controls.Add(this.panel15);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Controls.Add(this.panel2);
@@ -713,6 +715,14 @@
             this.panel2.Size = new System.Drawing.Size(137, 33);
             this.panel2.TabIndex = 51;
             // 
+            // HiddenIdColumn
+            // 
+            this.HiddenIdColumn.Location = new System.Drawing.Point(268, 36);
+            this.HiddenIdColumn.Name = "HiddenIdColumn";
+            this.HiddenIdColumn.Size = new System.Drawing.Size(118, 23);
+            this.HiddenIdColumn.TabIndex = 31;
+            this.HiddenIdColumn.Visible = false;
+            // 
             // Parents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -808,5 +818,6 @@
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel15;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox HiddenIdColumn;
     }
 }

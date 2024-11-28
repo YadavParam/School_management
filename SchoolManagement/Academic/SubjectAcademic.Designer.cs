@@ -28,16 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubjectAcademic));
             this.SelectClasses = new Krypton.Toolkit.KryptonComboBox();
             this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
             this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.SubjectName = new Krypton.Toolkit.KryptonTextBox();
             this.SubjectDataGridView = new Krypton.Toolkit.KryptonDataGridView();
+            this.SubjectIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SelectClassColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SubjectNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EditButtonColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.DeleteButtonColumn = new System.Windows.Forms.DataGridViewImageColumn();
             this.SubjectSubmit = new Krypton.Toolkit.KryptonButton();
             this.previousBtn = new Krypton.Toolkit.KryptonButton();
             this.nextBtn = new Krypton.Toolkit.KryptonButton();
@@ -48,11 +53,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.SubjectIdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SelectClassColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SubjectNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EditButtonColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.DeleteButtonColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.kryptonLabel3 = new Krypton.Toolkit.KryptonLabel();
+            this.Search = new Krypton.Toolkit.KryptonTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.SelectClasses)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SubjectDataGridView)).BeginInit();
             this.panel1.SuspendLayout();
@@ -125,12 +127,12 @@
             this.SubjectDataGridView.AllowUserToAddRows = false;
             this.SubjectDataGridView.AllowUserToResizeColumns = false;
             this.SubjectDataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.SubjectDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.SubjectDataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.SubjectDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -142,19 +144,71 @@
             this.EditButtonColumn,
             this.DeleteButtonColumn});
             this.SubjectDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.SubjectDataGridView.Location = new System.Drawing.Point(17, 186);
+            this.SubjectDataGridView.Location = new System.Drawing.Point(17, 216);
             this.SubjectDataGridView.Name = "SubjectDataGridView";
             this.SubjectDataGridView.ReadOnly = true;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DodgerBlue;
-            this.SubjectDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.SubjectDataGridView.Size = new System.Drawing.Size(1115, 484);
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.DodgerBlue;
+            this.SubjectDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle24;
+            this.SubjectDataGridView.Size = new System.Drawing.Size(1115, 454);
             this.SubjectDataGridView.StateCommon.Background.Color1 = System.Drawing.Color.White;
             this.SubjectDataGridView.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
             this.SubjectDataGridView.StateCommon.HeaderRow.Content.Color1 = System.Drawing.Color.White;
             this.SubjectDataGridView.StateCommon.HeaderRow.Content.Color2 = System.Drawing.Color.White;
             this.SubjectDataGridView.TabIndex = 29;
             this.SubjectDataGridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SubjectDataGridView_CellClick);
+            // 
+            // SubjectIdColumn
+            // 
+            this.SubjectIdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SubjectIdColumn.DataPropertyName = "SubjectId";
+            this.SubjectIdColumn.HeaderText = "SubjectId";
+            this.SubjectIdColumn.MinimumWidth = 170;
+            this.SubjectIdColumn.Name = "SubjectIdColumn";
+            this.SubjectIdColumn.ReadOnly = true;
+            this.SubjectIdColumn.Visible = false;
+            // 
+            // SelectClassColumn
+            // 
+            this.SelectClassColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SelectClassColumn.DataPropertyName = "ClassName";
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SelectClassColumn.DefaultCellStyle = dataGridViewCellStyle22;
+            this.SelectClassColumn.HeaderText = "Class";
+            this.SelectClassColumn.MinimumWidth = 170;
+            this.SelectClassColumn.Name = "SelectClassColumn";
+            this.SelectClassColumn.ReadOnly = true;
+            // 
+            // SubjectNameColumn
+            // 
+            this.SubjectNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.SubjectNameColumn.DataPropertyName = "SubjectName";
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.SubjectNameColumn.DefaultCellStyle = dataGridViewCellStyle23;
+            this.SubjectNameColumn.HeaderText = "Subject Name";
+            this.SubjectNameColumn.MinimumWidth = 170;
+            this.SubjectNameColumn.Name = "SubjectNameColumn";
+            this.SubjectNameColumn.ReadOnly = true;
+            // 
+            // EditButtonColumn
+            // 
+            this.EditButtonColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.EditButtonColumn.HeaderText = "Edit";
+            this.EditButtonColumn.Image = ((System.Drawing.Image)(resources.GetObject("EditButtonColumn.Image")));
+            this.EditButtonColumn.MinimumWidth = 170;
+            this.EditButtonColumn.Name = "EditButtonColumn";
+            this.EditButtonColumn.ReadOnly = true;
+            this.EditButtonColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // DeleteButtonColumn
+            // 
+            this.DeleteButtonColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.DeleteButtonColumn.HeaderText = "Delete";
+            this.DeleteButtonColumn.Image = ((System.Drawing.Image)(resources.GetObject("DeleteButtonColumn.Image")));
+            this.DeleteButtonColumn.MinimumWidth = 170;
+            this.DeleteButtonColumn.Name = "DeleteButtonColumn";
+            this.DeleteButtonColumn.ReadOnly = true;
+            this.DeleteButtonColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
             // SubjectSubmit
             // 
@@ -223,6 +277,8 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.kryptonLabel3);
+            this.panel1.Controls.Add(this.Search);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.SubjectDataGridView);
@@ -285,57 +341,39 @@
             this.panel2.Size = new System.Drawing.Size(1149, 61);
             this.panel2.TabIndex = 38;
             // 
-            // SubjectIdColumn
+            // kryptonLabel3
             // 
-            this.SubjectIdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SubjectIdColumn.DataPropertyName = "SubjectId";
-            this.SubjectIdColumn.HeaderText = "SubjectId";
-            this.SubjectIdColumn.MinimumWidth = 170;
-            this.SubjectIdColumn.Name = "SubjectIdColumn";
-            this.SubjectIdColumn.ReadOnly = true;
-            this.SubjectIdColumn.Visible = false;
+            this.kryptonLabel3.Location = new System.Drawing.Point(18, 165);
+            this.kryptonLabel3.Name = "kryptonLabel3";
+            this.kryptonLabel3.Size = new System.Drawing.Size(72, 21);
+            this.kryptonLabel3.StateCommon.LongText.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel3.StateCommon.ShortText.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel3.TabIndex = 92;
+            this.kryptonLabel3.Values.Text = "Search :";
             // 
-            // SelectClassColumn
+            // Search
             // 
-            this.SelectClassColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SelectClassColumn.DataPropertyName = "ClassName";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SelectClassColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.SelectClassColumn.HeaderText = "Class";
-            this.SelectClassColumn.MinimumWidth = 170;
-            this.SelectClassColumn.Name = "SelectClassColumn";
-            this.SelectClassColumn.ReadOnly = true;
-            // 
-            // SubjectNameColumn
-            // 
-            this.SubjectNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.SubjectNameColumn.DataPropertyName = "SubjectName";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.SubjectNameColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            this.SubjectNameColumn.HeaderText = "Subject Name";
-            this.SubjectNameColumn.MinimumWidth = 170;
-            this.SubjectNameColumn.Name = "SubjectNameColumn";
-            this.SubjectNameColumn.ReadOnly = true;
-            // 
-            // EditButtonColumn
-            // 
-            this.EditButtonColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.EditButtonColumn.HeaderText = "Edit";
-            this.EditButtonColumn.Image = ((System.Drawing.Image)(resources.GetObject("EditButtonColumn.Image")));
-            this.EditButtonColumn.MinimumWidth = 170;
-            this.EditButtonColumn.Name = "EditButtonColumn";
-            this.EditButtonColumn.ReadOnly = true;
-            this.EditButtonColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            // 
-            // DeleteButtonColumn
-            // 
-            this.DeleteButtonColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.DeleteButtonColumn.HeaderText = "Delete";
-            this.DeleteButtonColumn.Image = ((System.Drawing.Image)(resources.GetObject("DeleteButtonColumn.Image")));
-            this.DeleteButtonColumn.MinimumWidth = 170;
-            this.DeleteButtonColumn.Name = "DeleteButtonColumn";
-            this.DeleteButtonColumn.ReadOnly = true;
-            this.DeleteButtonColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search.InputControlStyle = Krypton.Toolkit.InputControlStyle.Ribbon;
+            this.Search.Location = new System.Drawing.Point(96, 162);
+            this.Search.MinimumSize = new System.Drawing.Size(0, 31);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(391, 31);
+            this.Search.StateActive.Content.Color1 = System.Drawing.SystemColors.ControlDark;
+            this.Search.StateCommon.Border.Color1 = System.Drawing.SystemColors.ActiveBorder;
+            this.Search.StateCommon.Border.Color2 = System.Drawing.SystemColors.ActiveBorder;
+            this.Search.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.Search.StateCommon.Border.Rounding = 2F;
+            this.Search.StateCommon.Content.Color1 = System.Drawing.Color.Black;
+            this.Search.StateCommon.Content.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Search.TabIndex = 91;
+            this.Search.Text = "Enter Subject Name";
+            this.Search.TextChanged += new System.EventHandler(this.Search_TextChanged);
+            this.Search.Enter += new System.EventHandler(this.Search_Enter);
+            this.Search.Leave += new System.EventHandler(this.Search_Leave);
             // 
             // SubjectAcademic
             // 
@@ -354,6 +392,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SelectClasses)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SubjectDataGridView)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -388,5 +427,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SubjectNameColumn;
         private System.Windows.Forms.DataGridViewImageColumn EditButtonColumn;
         private System.Windows.Forms.DataGridViewImageColumn DeleteButtonColumn;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel3;
+        private Krypton.Toolkit.KryptonTextBox Search;
     }
 }

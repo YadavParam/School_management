@@ -42,7 +42,7 @@ namespace SchoolManagement.Academic
         {
             try
             {
-                if (EventSubmit.Text.Trim() == "Save Event")
+                if (EventSubmit.Text == "Save Event")
                 {
                     var events = new Event
                     {

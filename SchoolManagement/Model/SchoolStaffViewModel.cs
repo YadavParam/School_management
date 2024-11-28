@@ -8,6 +8,7 @@ namespace SchoolManagement.Model
 {
     public class SchoolStaffViewModel
     {
+        public int UserId { get; set; }
         public int Id { get; set; }
         public int SchoolId { get; set; }
         public string Name { get; set; }

@@ -125,5 +125,56 @@ namespace SchoolManagement.Users
 
         private int TotalPages => allData != null ? (int)Math.Ceiling((double)allData.Count / pageSize) : 0;
 
+
+        private void UpdateDataGridView(List<AccountsOfMonthWiseViewModel> data = null)
+        {
+            AccountsMonthWiseRecord.Rows.Clear();
+
+            var sourceData = data ?? allData.Skip(currentPage * pageSize).Take(pageSize).ToList();
+
+            foreach (var item in sourceData)
+            {
+                AccountsMonthWiseRecord.Rows.Add(item.SchoolId, item.StudentId, item.ClassId, item.SectionId, item.Name, item.ClassName, item.FeeAmount, item.TotalPaidPayment, item.LatestStatus);
+            }
+
+            if (data == null)
+            {
+                previousBtn.Enabled = currentPage > 0;
+                nextBtn.Enabled = currentPage < TotalPages - 1;
+                btnBetweenPg.Text = $"Pages: {currentPage + 1} / {TotalPages}";
+            }
+        }
+
+        private void Search_Enter(object sender, EventArgs e)
+        {
+            if (Search.Text == "Enter Student Name")
+            {
+                Search.Text = string.Empty;
+            }
+        }
+
+        private void Search_Leave(object sender, EventArgs e)
+        {
+            if (Search.Text == "")
+            {
+                Search.Text = "Enter Student Name";
+            }
+        }
+
+        private void Search_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Search.Text) || Search.Text == "Enter Student Name")
+            {
+                UpdateDataGridView();
+            }
+            else
+            {
+                var filteredData = allData.Where(x => x.Name.IndexOf(Search.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+
+                UpdateDataGridView(filteredData);
+            }
+
+            AccountsMonthWiseRecord.Refresh();
+        }
     }
 }

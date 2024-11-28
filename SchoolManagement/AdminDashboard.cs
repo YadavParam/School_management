@@ -68,14 +68,18 @@ namespace SchoolManagement
 
         private void NoOfStaffsShow()
         {
-            int staffCount = DbContext.SchoolStaffs.Count();
+            int staffCount = DbContext.Users.Count();
 
             NoOfStaffShow.Text = $"{staffCount}";
         }
 
         private void NextEventDates()
         {
-            var nextEvent = DbContext.Events.Where(x => x.IsActive == true).OrderBy(x => x.StartingDate).FirstOrDefault(); 
+            DateTime currentDate = DateTime.Now;
+
+            var nextEvent = DbContext.Events.Where(x => x.IsActive == true && x.StartingDate >= currentDate)
+                .OrderBy(x => x.StartingDate)
+                .FirstOrDefault();
 
             if (nextEvent != null)
             {
@@ -297,7 +301,7 @@ namespace SchoolManagement
 
                     foreach (var item in acountData)
                     {
-
+                         
                         AccountsOfMonthDataGridView.Rows.Add(item.SchoolId, item.StudentId, item.ClassId, item.SectionId, item.Name, item.ClassName, item.FeeAmount, item.TotalPaidPayment, item.LatestStatus);
                     }
 

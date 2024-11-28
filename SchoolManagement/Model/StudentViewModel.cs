@@ -26,6 +26,11 @@ namespace SchoolManagement.Model
         public string MothersMobileNumber { get; set; }
         public string FathersOccupation { get; set; }
         public string MothersOccupation { get; set; }
-        public string RemainingAmount { get; set; }    
+        public string RemainingAmount { get; set; }
+        public string SectionName { get; set; }
+        public Nullable<System.DateTime> Birthday { get; set; }
+        public string Gender { get; set; }
+        public string BloodGroup { get; set; }
+        public string Address { get; set; }
     }
 }

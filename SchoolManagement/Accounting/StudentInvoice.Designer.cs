@@ -34,7 +34,7 @@
             // 
             // crystalReportViewer
             // 
-            this.crystalReportViewer.ActiveViewIndex = 0;
+            this.crystalReportViewer.ActiveViewIndex = -1;
             this.crystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -46,21 +46,16 @@
             this.crystalReportViewer.ShowGroupTreeButton = false;
             this.crystalReportViewer.ShowLogo = false;
             this.crystalReportViewer.ShowParameterPanelButton = false;
-            this.crystalReportViewer.Size = new System.Drawing.Size(1135, 567);
+            this.crystalReportViewer.Size = new System.Drawing.Size(1162, 690);
             this.crystalReportViewer.TabIndex = 0;
             this.crystalReportViewer.Load += new System.EventHandler(this.crystalReportViewer_Load);
-            // 
-            // reportDocument1
-            // 
-            this.reportDocument1.FileName = "rassdk://F:\\dataclone\\SchoolManagement\\SchoolManagement\\Accounting\\IM_CrystalRepo" +
-    "rts\\CrystalReport.rpt";
             // 
             // StudentInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1135, 567);
+            this.ClientSize = new System.Drawing.Size(1162, 690);
             this.Controls.Add(this.crystalReportViewer);
             this.Name = "StudentInvoice";
             this.Text = "StudentInvoice";

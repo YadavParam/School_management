@@ -117,7 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="IdColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="StudentIdColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="Section.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="Name.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -135,7 +141,7 @@
   <metadata name="Class.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Section.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="SectionName.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="Email.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -159,6 +165,12 @@
   <metadata name="RemainingAmountColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="FeePay.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="InvoiceColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="Edit.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -166,7 +178,7 @@
   <data name="Edit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAA0AAAANCAYAAABy6+R8AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vwAADr8BOAVTJAAAAXBJREFUKFNjwAeeuLovfe7lde65q6sOVAg/eGhjI3jfyenSEzf3/888PL+/8PAo
+        vAAADrwBlbxySQAAAXBJREFUKFNjwAeeuLovfe7lde65q6sOVAg/eGhjI3jfyenSEzf3/888PL+/8PAo
         +F9fzwSVxgTflmjKf1igcuhem4L5Q3vHjofOLn+AGv8/dXdPgSpBBf/rGZi+LFbd93q2wv9HkyV/3u4T
         q7rvbO1w38Hx5H17ewmoMlTweYlq8Zs5iv+fz5D7/3Ci2P9nM2T/35sgcfRMvSQXVAkq+LxEUfftPKUf
         L2bK/382Tfr/02ky/59Pl/n/YKLIAqgSVHB/vjzH+/nKF58DTX4zRwmoQfr/K6ATH0+ReHi3Q5AfqgwV
@@ -175,10 +187,19 @@
         oVK4AVBDuqamZr+SkpIYVAgPYGAAAL0wnWxAw6F0AAAAAElFTkSuQmCC
 </value>
   </data>
-  <metadata name="FeePay.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Delete.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="InvoiceColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="Delete.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAA8AAAAQCAYAAADJViUEAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        vAAADrwBlbxySQAAAV1JREFUOE+N0r1KA0EQB/AVGyu1sPE5hFimieSy87F7kHRiL/iBnZ0Qa7U2UWMn
+        gq1PIGqroG+iaEDQmeye2ZBc9A8DuZ353e1ezkyKc24RnaOi9Dq2xtNqtWYRcakoa2kdkB8t0pUFemg0
+        YCPt63ykxgBAxQI+y/DTf2ptza5Gaoz3fgXJvYIWu5eJFXs655vNSqTGVKvVOSC+Q3bffxbxvc5HGkLO
+        X2iT2N8g8y0wfwHRpmyzL0Cvr7XP3vciGYZ93gt3z/fk9R7K774szwh+s8htZr8b+pNwnl+mWI4xin3A
+        usMgkggeebLgT1kefzK58yCSFGceYBrgD1n+xfIedrQv//9ZEEn0jgWWc7XLsCXqBpFEhrvTsKDtAUbq
+        BJFEmp1pGIC2yjHyacD+QL6mY8X1en3ZEr/L932UWdwvxzIQ8PRqIJ5EMkyWZfMgn5Fs35WV9mu12kIQ
+        xvwAYkcJrwLcSzwAAAAASUVORK5CYII=
+</value>
+  </data>
 </root>

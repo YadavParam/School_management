@@ -251,6 +251,7 @@ namespace SchoolManagement.Accounting
             {
                 StuFeeDetailsDataGridView.Rows.Add(item.Id, item.SchoolId, item.ClassName, item.YearFee, item.Installment);
             }
+            StudentFeeEdit();
 
             previousBtn.Enabled = currentPage > 0;
             nextBtn.Enabled = currentPage < TotalPages - 1;
@@ -278,5 +279,58 @@ namespace SchoolManagement.Accounting
 
         private int TotalPages => allData != null ? (int)Math.Ceiling((double)allData.Count / pageSize) : 0;
 
+
+        private void UpdateDataGridView(List<StudentFeeModel> data = null)
+        {
+            StuFeeDetailsDataGridView.Rows.Clear();
+
+            var sourceData = data ?? allData.Skip(currentPage * pageSize).Take(pageSize).ToList();
+
+            foreach (var item in sourceData)
+            {
+                StuFeeDetailsDataGridView.Rows.Add(item.Id, item.SchoolId, item.ClassName, item.YearFee, item.Installment);
+            }
+
+            StudentFeeEdit();
+
+            if (data == null)
+            {
+                previousBtn.Enabled = currentPage > 0;
+                nextBtn.Enabled = currentPage < TotalPages - 1;
+                btnBetweenPg.Text = $"Pages: {currentPage + 1} / {TotalPages}";
+            }
+        }
+
+        private void Search_Enter(object sender, EventArgs e)
+        {
+            if (Search.Text == "Enter Class Name")
+            {
+                Search.Text = string.Empty;
+            }
+        }
+
+        private void Search_Leave(object sender, EventArgs e)
+        {
+            if (Search.Text == "")
+            {
+                Search.Text = "Enter Class Name";
+            }
+        }
+
+        private void Search_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Search.Text) || Search.Text == "Enter Class Name")
+            {
+                UpdateDataGridView();
+            }
+            else
+            {
+                var filteredData = allData.Where(x => x.ClassName.IndexOf(Search.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+
+                UpdateDataGridView(filteredData);
+            }
+
+            StuFeeDetailsDataGridView.Refresh();
+        }
     }
 }

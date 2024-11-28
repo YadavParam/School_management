@@ -33,18 +33,18 @@ namespace SchoolManagement.Model
         public virtual DbSet<SchoolDetail> SchoolDetails { get; set; }
         public virtual DbSet<Section> Sections { get; set; }
         public virtual DbSet<Stream> Streams { get; set; }
-        public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserSubscriptionPlanDetail> UserSubscriptionPlanDetails { get; set; }
-        public virtual DbSet<StudentAttandance> StudentAttandances { get; set; }
         public virtual DbSet<ClassTeacherAcademic> ClassTeacherAcademics { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<StudentFeeAccounting> StudentFeeAccountings { get; set; }
         public virtual DbSet<StudentFeeInstallment> StudentFeeInstallments { get; set; }
         public virtual DbSet<StudentInstallment> StudentInstallments { get; set; }
         public virtual DbSet<Expens> Expenses { get; set; }
         public virtual DbSet<Event> Events { get; set; }
         public virtual DbSet<SchoolStaff> SchoolStaffs { get; set; }
+        public virtual DbSet<StudentAttendance> StudentAttendances { get; set; }
+        public virtual DbSet<SatffAttendance> SatffAttendances { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using SchoolManagement.Academic;
 using SchoolManagement.Accounting;
+using SchoolManagement.Users;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -158,7 +159,7 @@ namespace SchoolManagement
             if (menuexpand == false)
             {
                 UserPanel.Height += 50;
-                if (UserPanel.Height >= 120)
+                if (UserPanel.Height >= 180)
                 {
                     menutransition.Stop();
                     menuexpand = true;
@@ -223,15 +224,33 @@ namespace SchoolManagement
 
         }
 
+        private void BiomatricAttendance_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                form = (StaffAttendanceForm)Application.OpenForms["StaffAttendanceForm"];
+                if (form == null)
+                {
+                    form = new StaffAttendanceForm();
+                }
+                form.TopLevel = false;
+                Application.OpenForms.OfType<MainLayoutForm>().First().MainPanel.Dock = DockStyle.Fill;
+                Application.OpenForms.OfType<MainLayoutForm>().First().MainPanel.Controls.Add(form);
+                form.BringToFront();
+                form.Show();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         private void Daily_attandance_Click(object sender, EventArgs e)
         {
             try
             {
-                form = (StudentAttandence)Application.OpenForms["StudentAttandence"];
-                if (form == null)
-                {
-                    form = new StudentAttandence();
-                }
+                form = new StudentAttandence();
                 form.TopLevel = false;
                 Application.OpenForms.OfType<MainLayoutForm>().First().MainPanel.Dock = DockStyle.Fill;
                 Application.OpenForms.OfType<MainLayoutForm>().First().MainPanel.Controls.Add(form);

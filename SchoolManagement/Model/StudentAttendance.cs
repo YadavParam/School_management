@@ -12,27 +12,18 @@ namespace SchoolManagement.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class StudentAttendance
     {
         public int Id { get; set; }
+        public Nullable<int> SchoolId { get; set; }
         public string StudentId { get; set; }
-        public int SchoolId { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-        public Nullable<int> StudentType { get; set; }
-        public string ParentId { get; set; }
         public Nullable<int> ClassId { get; set; }
         public string SectionId { get; set; }
-        public Nullable<System.DateTime> Birthday { get; set; }
-        public string Gender { get; set; }
-        public string BloodGroup { get; set; }
-        public string Address { get; set; }
-        public byte[] Image { get; set; }
+        public Nullable<int> Attendance { get; set; }
+        public Nullable<System.DateTime> AttendanceDate { get; set; }
         public Nullable<bool> IsActive { get; set; }
-        public Nullable<bool> Isdelete { get; set; }
+        public Nullable<bool> IsDelete { get; set; }
         public Nullable<System.DateTime> DateAdded { get; set; }
         public Nullable<System.DateTime> DateModified { get; set; }
-        public string Password { get; set; }
     }
 }

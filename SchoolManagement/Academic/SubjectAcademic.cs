@@ -253,5 +253,38 @@ namespace SchoolManagement
                 UpdateDataGridView();
             }
         }
+
+        private void Search_Enter(object sender, EventArgs e)
+        {
+            if (Search.Text == "Enter Subject Name")
+            {
+                Search.Text = string.Empty;
+            }
+        }
+
+        private void Search_Leave(object sender, EventArgs e)
+        {
+            if (Search.Text == "")
+            {
+                Search.Text = "Enter Subject Name";
+
+            }
+        }
+
+        private void Search_TextChanged(object sender, EventArgs e)
+        {
+            if (Search.Text == "" || Search.Text == "Enter Subject Name")
+            {
+                SubjectDataGridView.DataSource = allData;
+            }
+            else
+            {
+                var filteredData = allData.Where(x => x.SubjectName.IndexOf(Search.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+
+                SubjectDataGridView.DataSource = filteredData;
+            }
+
+            SubjectDataGridView.Refresh();
+        }
     }
 }

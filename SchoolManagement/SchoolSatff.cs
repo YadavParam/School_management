@@ -17,6 +17,7 @@ using SchoolManagement.Helper;
 using DocumentFormat.OpenXml.Drawing.Diagrams;
 using MaterialSkin.Controls;
 using System.IO;
+using SchoolManagement.Academic;
 
 namespace SchoolManagement
 {
@@ -34,6 +35,10 @@ namespace SchoolManagement
 
         private void SchoolSatff_Load(object sender, EventArgs e)
         {
+
+            SelectClassCustomCheckBox();
+            SelectSubjectCustomCheckBox();
+
             SelectStaff.DisplayMember = "Key";
             SelectStaff.ValueMember = "Value";
             SelectStaff.DataSource = Enum.GetValues(typeof(SchoolStaffs));
@@ -43,13 +48,12 @@ namespace SchoolManagement
             Gender.DataSource = Enum.GetValues(typeof(SchoolStaffGender));
 
             int Id = EditStaffViewModel.Id;
-            if (Id != null && Id != 0)
+            int SchoolId = EditStaffViewModel.SchoolId;
+            int UserId = EditStaffViewModel.UserId;
+            if (Id != null && Id != 0 && SchoolId != null && SchoolId != 0 && UserId != null && UserId != 0)
             {
                 getstaffdata(Id);
             }
-
-            SelectClassCustomCheckBox();
-            SelectSubjectCustomCheckBox();
         }
 
         private void SelectClassCustomCheckBox()
@@ -304,9 +308,9 @@ namespace SchoolManagement
                     UpdateSection();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Something went wrong, if problem continue occurs, please contact to Singhtek!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -334,30 +338,47 @@ namespace SchoolManagement
                         AccountNumber.Text = getstaffdetails.AccountNumber;
                         IFSCCode.Text = getstaffdetails.IFSCCode;
                         BranchName.Text = getstaffdetails.BranchName;
-                        JoiningDate.Text = getstaffdetails.JoiningDate?.ToString("dd-MM-yyyy");
+                        if (getstaffdetails.JoiningDate.HasValue)
+                        {
+                            JoiningDate.Value = getstaffdetails.JoiningDate.Value;
+                        }
                         Designation.Text = getstaffdetails.Designation;
                         TeacherSubmit.Text = "Update";
                         SelectStaff.SelectedIndex = 3;
 
-                        if (getstaffdetails.ClassId.HasValue)
+                        if (getstaffdetails.Image != null && getstaffdetails.Image.Length > 0)
                         {
-                            int classIdToSelect = getstaffdetails.ClassId.Value;
-                            SetCheckedState(materialCheckedListBoxClass, classIdToSelect);
-                            materialCheckedListBoxClass.Refresh();
+                            using (var ms = new MemoryStream(getstaffdetails.Image))
+                            {
+                                StaffPicture.Image = Image.FromStream(ms);
+                            }
                         }
 
-                        if (getstaffdetails.SubjectId.HasValue)
+                        if (getstaffdetails.ClassId != null)
                         {
-                            int subjectIdToSelect = getstaffdetails.SubjectId.Value;
-                            SetCheckedState(materialCheckedListBoxSubject, subjectIdToSelect);
+                            int classId = getstaffdetails.ClassId.Value; 
+                            foreach (var item in materialCheckedListBoxClass.Items)
+                            {
+                                if (item is MaterialCheckbox checkbox && Convert.ToInt32(checkbox.Tag) == classId)
+                                {
+                                    checkbox.Checked = true; 
+                                    break;
+                                }
+                            }
                         }
 
-
-                        //using (var ms = new MemoryStream(getstaffdetails.Image))
-                        //{
-                        //    StaffPicture.Image = Image.FromStream(ms);
-                        //}
-
+                        if (getstaffdetails.SubjectId != null)
+                        {
+                            int subjectId = getstaffdetails.SubjectId.Value;
+                            foreach (var item in materialCheckedListBoxSubject.Items)
+                            {
+                                if (item is MaterialCheckbox checkbox && Convert.ToInt32(checkbox.Tag) == subjectId)
+                                {
+                                    checkbox.Checked = true;
+                                    break;
+                                }
+                            }
+                        }
                     }
                     else
                     {
@@ -367,27 +388,15 @@ namespace SchoolManagement
                 }
                 else
                 {
-                    MessageBox.Show("Staff record not found.");
+                    MessageBox.Show("Staff record not found.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                throw ex;
-            }
-        }
-
-        private void SetCheckedState(MaterialCheckedListBox checkedListBox, int idToSelect)
-        {
-            foreach (var item in checkedListBox.Items)
-            {
-                if (item is MaterialCheckbox checkbox && checkbox.Tag != null && Convert.ToInt32(checkbox.Tag) == idToSelect)
-                {
-                    checkbox.Checked = true;
-                    break;
-                }
+                MessageBox.Show("Something went wrong, if problem continue occurs, please contact to Singhtek!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -398,15 +407,39 @@ namespace SchoolManagement
                 var setstaffdetails = dbContext.SchoolStaffs.AsNoTracking().FirstOrDefault(x => x.Id == staffIdToUpdate);
                 if (setstaffdetails != null)
                 {
-                    var UserSetstaffdetails = dbContext.Users.AsNoTracking().FirstOrDefault(x => x.UserId == setstaffdetails.UserId);
+                    var UserSetstaffdetails = dbContext.Users.FirstOrDefault(x => x.UserId == setstaffdetails.UserId);
                     if (UserSetstaffdetails != null)
                     {
                         string[] names = FullName.Text.Trim().Split(new char[] { ' ' }, 2, StringSplitOptions.RemoveEmptyEntries);
                         string firstName = names.Length > 0 ? names[0] : "";
                         string lastName = names.Length > 1 ? names[1] : "";
-                        //SubjectClassDropdlist selectedClass = (SubjectClassDropdlist)TeacherSelectClass.SelectedItem;
-                        //SubjectClassDropdlist subjectClass = (SubjectClassDropdlist)TeacherSelectSubject.SelectedItem;
 
+                        int? classId = null;
+                        int? subjectId = null;
+
+                        if (materialCheckedListBoxClass.Items.Count > 1)
+                        {
+                            for (int i = 1; i < materialCheckedListBoxClass.Items.Count; i++)
+                            {
+                                if (materialCheckedListBoxClass.Items[i] is MaterialCheckbox checkbox && checkbox.Checked)
+                                {
+                                    classId = Convert.ToInt32(checkbox.Tag);
+                                    break; 
+                                }
+                            }
+                        }
+
+                        if (materialCheckedListBoxSubject.Items.Count > 1)
+                        {
+                            for (int i = 1; i < materialCheckedListBoxSubject.Items.Count; i++)
+                            {
+                                if (materialCheckedListBoxSubject.Items[i] is MaterialCheckbox checkbox && checkbox.Checked)
+                                {
+                                    subjectId = Convert.ToInt32(checkbox.Tag);
+                                    break; 
+                                }
+                            }
+                        }
 
                         UserSetstaffdetails.UserName = FullName.Text;
                         UserSetstaffdetails.Email = Email.Text;
@@ -421,9 +454,24 @@ namespace SchoolManagement
                         setstaffdetails.AccountNumber = AccountNumber.Text;
                         setstaffdetails.IFSCCode = IFSCCode.Text;
                         setstaffdetails.BranchName = BranchName.Text;
-                        //setstaffdetails.ClassId = selectedClass.Value;
-                        //setstaffdetails.SubjectId = subjectClass.Value;
+                        setstaffdetails.JoiningDate = Convert.ToDateTime(JoiningDate.Text);
                         setstaffdetails.Designation = Designation.Text;
+                        setstaffdetails.ClassId = classId;
+                        setstaffdetails.SubjectId = subjectId;
+
+                        if (StaffPicture.Image != null)
+                        {
+                            using (var ms = new MemoryStream())
+                            {
+                                StaffPicture.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png); 
+                                setstaffdetails.Image = ms.ToArray();
+                            }
+                        }
+                        else
+                        {
+                            setstaffdetails.Image = null; 
+                        }
+
                         var messages_schoolStaff = validates.ValidateSchoolStaff(setstaffdetails, UserSetstaffdetails);
                         if (messages_schoolStaff.Status == true)
                         {
@@ -444,6 +492,10 @@ namespace SchoolManagement
                             TeacherSubmit.Text = "Submit";
                             this.Hide();
                             form = new StaffDetails();
+                            form.TopLevel = false;
+                            Application.OpenForms.OfType<MainLayoutForm>().First().MainPanel.Dock = DockStyle.Fill;
+                            Application.OpenForms.OfType<MainLayoutForm>().First().MainPanel.Controls.Add(form);
+                            form.BringToFront();
                             form.Show();
                         }
                     }
@@ -457,10 +509,10 @@ namespace SchoolManagement
                     MessageBox.Show("Staff record not found or failed to update.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Something went wrong, if problem continue occurs, please contact to Singhtek!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

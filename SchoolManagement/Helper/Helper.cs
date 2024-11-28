@@ -19,7 +19,9 @@ namespace SchoolManagement.Helper
             [Description("B")]
             B,
             [Description("AB")]
-            AB
+            AB,
+            [Description("O")]
+            O
         }
         public enum Gender
         {

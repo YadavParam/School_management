@@ -78,6 +78,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="ExcelDataReader, Version=3.7.0.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
+      <HintPath>..\packages\ExcelDataReader.3.7.0\lib\net462\ExcelDataReader.dll</HintPath>
+    </Reference>
     <Reference Include="IronSoftware.Abstractions, Version=2024.1.0.7, Culture=neutral, PublicKeyToken=212d70e9efeae4c7, processorArchitecture=MSIL">
       <HintPath>..\packages\IronSoftware.Common.2024.1.7\lib\netstandard2.0\IronSoftware.Abstractions.dll</HintPath>
     </Reference>
@@ -181,6 +184,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -428,7 +432,13 @@
     <Compile Include="Model\ExpenseManagerViewModel.cs" />
     <Compile Include="Model\FeeInvoiceCrystalReportViewModel.cs" />
     <Compile Include="Model\ParentsViewModel.cs" />
+    <Compile Include="Model\SatffAttendance.cs">
+      <DependentUpon>SchoolManagement.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\SchoolStaffViewModel.cs" />
+    <Compile Include="Model\StudentAttendance.cs">
+      <DependentUpon>SchoolManagement.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\StudentFeeInstallment.cs">
       <DependentUpon>SchoolManagement.tt</DependentUpon>
     </Compile>
@@ -483,9 +493,6 @@
     <Compile Include="Model\Student.cs">
       <DependentUpon>SchoolManagement.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\StudentAttandance.cs">
-      <DependentUpon>SchoolManagement.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\StudentAttandanceView.cs" />
     <Compile Include="Model\StudentFeeAccounting.cs">
       <DependentUpon>SchoolManagement.tt</DependentUpon>
@@ -500,9 +507,6 @@
     </Compile>
     <Compile Include="Model\SubjectClassDropdlist.cs" />
     <Compile Include="Model\SubjectViewModel.cs" />
-    <Compile Include="Model\sysdiagram.cs">
-      <DependentUpon>SchoolManagement.tt</DependentUpon>
-    </Compile>
     <Compile Include="Model\User.cs">
       <DependentUpon>SchoolManagement.tt</DependentUpon>
     </Compile>
@@ -564,6 +568,12 @@
     </Compile>
     <Compile Include="Users\Parents.Designer.cs">
       <DependentUpon>Parents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Users\StaffAttendanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users\StaffAttendanceForm.Designer.cs">
+      <DependentUpon>StaffAttendanceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Users\StaffDetailsPopUp.cs">
       <SubType>Form</SubType>
@@ -694,6 +704,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Users\Parents.resx">
       <DependentUpon>Parents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users\StaffAttendanceForm.resx">
+      <DependentUpon>StaffAttendanceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\StaffDetailsPopUp.resx">
       <DependentUpon>StaffDetailsPopUp.cs</DependentUpon>

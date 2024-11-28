@@ -124,7 +124,7 @@ namespace SchoolManagement.Accounting
 
                         expensesrecord(1, pageSize);
 
-                        MessageBox.Show("Record deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Record deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -163,6 +163,38 @@ namespace SchoolManagement.Accounting
                 currentPage++;
                 UpdateDataGridView();
             }
+        }
+
+        private void Search_Enter(object sender, EventArgs e)
+        {
+            if(Search.Text == "Enter Expense Category")
+            {
+                Search.Text = string.Empty;
+            }
+        }
+
+        private void Search_Leave(object sender, EventArgs e)
+        {
+            if (Search.Text == "")
+            {
+                Search.Text = "Enter Expense Category";
+            }
+        }
+
+        private void Search_TextChanged(object sender, EventArgs e)
+        {
+            if (Search.Text == "" || Search.Text == "Enter Expense Category")
+            {
+                ExpensesRecord.DataSource = allData;
+            }
+            else
+            {
+                var filteredData = allData.Where(x => x.ExpenseCategory.IndexOf(Search.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+
+                ExpensesRecord.DataSource = filteredData;
+            }
+
+            ExpensesRecord.Refresh();
         }
     }
 }

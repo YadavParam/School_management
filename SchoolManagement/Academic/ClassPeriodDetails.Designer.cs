@@ -49,6 +49,8 @@
             this.btnBetweenPg = new Krypton.Toolkit.KryptonLabel();
             this.nextBtn = new Krypton.Toolkit.KryptonButton();
             this.TotalCount = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonLabel5 = new Krypton.Toolkit.KryptonLabel();
+            this.Search = new Krypton.Toolkit.KryptonTextBox();
             this.IdColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClassColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SectionColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,13 +98,13 @@
             this.EditColumn,
             this.ViewPeriodColumn});
             this.DetailPeriodDataGridView.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.DetailPeriodDataGridView.Location = new System.Drawing.Point(17, 155);
+            this.DetailPeriodDataGridView.Location = new System.Drawing.Point(17, 201);
             this.DetailPeriodDataGridView.Name = "DetailPeriodDataGridView";
             this.DetailPeriodDataGridView.ReadOnly = true;
             dataGridViewCellStyle10.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.DodgerBlue;
             this.DetailPeriodDataGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
-            this.DetailPeriodDataGridView.Size = new System.Drawing.Size(1115, 515);
+            this.DetailPeriodDataGridView.Size = new System.Drawing.Size(1115, 469);
             this.DetailPeriodDataGridView.StateCommon.Background.Color1 = System.Drawing.Color.White;
             this.DetailPeriodDataGridView.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.GridBackgroundList;
             this.DetailPeriodDataGridView.StateCommon.HeaderRow.Content.Color1 = System.Drawing.Color.White;
@@ -148,6 +150,8 @@
             // panel1
             // 
             this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.kryptonLabel5);
+            this.panel1.Controls.Add(this.Search);
             this.panel1.Controls.Add(this.panel7);
             this.panel1.Controls.Add(this.DetailPeriodDataGridView);
             this.panel1.Controls.Add(this.kryptonPanel1);
@@ -214,6 +218,40 @@
             this.TotalCount.TabIndex = 29;
             this.TotalCount.Values.Text = ".";
             // 
+            // kryptonLabel5
+            // 
+            this.kryptonLabel5.Location = new System.Drawing.Point(17, 148);
+            this.kryptonLabel5.Name = "kryptonLabel5";
+            this.kryptonLabel5.Size = new System.Drawing.Size(72, 21);
+            this.kryptonLabel5.StateCommon.LongText.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel5.StateCommon.ShortText.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonLabel5.TabIndex = 96;
+            this.kryptonLabel5.Values.Text = "Search :";
+            // 
+            // Search
+            // 
+            this.Search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Search.InputControlStyle = Krypton.Toolkit.InputControlStyle.Ribbon;
+            this.Search.Location = new System.Drawing.Point(95, 145);
+            this.Search.MinimumSize = new System.Drawing.Size(0, 31);
+            this.Search.Name = "Search";
+            this.Search.Size = new System.Drawing.Size(391, 31);
+            this.Search.StateActive.Content.Color1 = System.Drawing.SystemColors.ControlDark;
+            this.Search.StateCommon.Border.Color1 = System.Drawing.SystemColors.ActiveBorder;
+            this.Search.StateCommon.Border.Color2 = System.Drawing.SystemColors.ActiveBorder;
+            this.Search.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.Search.StateCommon.Border.Rounding = 2F;
+            this.Search.StateCommon.Content.Color1 = System.Drawing.Color.Black;
+            this.Search.StateCommon.Content.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Search.TabIndex = 95;
+            this.Search.Text = "Enter Class Teacher Name";
+            this.Search.TextChanged += new System.EventHandler(this.Search_TextChanged);
+            this.Search.Enter += new System.EventHandler(this.Search_Enter);
+            this.Search.Leave += new System.EventHandler(this.Search_Leave);
+            // 
             // IdColumn
             // 
             this.IdColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -251,7 +289,7 @@
             this.ClassTeacherColumn.DataPropertyName = "StaffName";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.ClassTeacherColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ClassTeacherColumn.HeaderText = "ClassTeacher";
+            this.ClassTeacherColumn.HeaderText = "Class Teacher Name";
             this.ClassTeacherColumn.MinimumWidth = 200;
             this.ClassTeacherColumn.Name = "ClassTeacherColumn";
             this.ClassTeacherColumn.ReadOnly = true;
@@ -262,7 +300,7 @@
             this.TotalPeriodColumn.DataPropertyName = "Period";
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.TotalPeriodColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.TotalPeriodColumn.HeaderText = "TotalPeriod";
+            this.TotalPeriodColumn.HeaderText = "Total Period";
             this.TotalPeriodColumn.MinimumWidth = 200;
             this.TotalPeriodColumn.Name = "TotalPeriodColumn";
             this.TotalPeriodColumn.ReadOnly = true;
@@ -354,6 +392,7 @@
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.ResumeLayout(false);
@@ -372,6 +411,8 @@
         private Krypton.Toolkit.KryptonLabel btnBetweenPg;
         private Krypton.Toolkit.KryptonButton nextBtn;
         private Krypton.Toolkit.KryptonLabel TotalCount;
+        private Krypton.Toolkit.KryptonLabel kryptonLabel5;
+        private Krypton.Toolkit.KryptonTextBox Search;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn SectionColumn;

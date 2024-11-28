@@ -25,6 +25,7 @@ namespace SchoolManagement
         private List<StudentViewModel> allData;
         private int pageSize = 25;
         private int currentPage = 0;
+        private int Id;
         private int schoolid;
         private int classid;
         private string studentid;
@@ -55,19 +56,30 @@ namespace SchoolManagement
 
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-                    var sql = new StringBuilder($@"select stu.Id,stu.StudentId,stu.Name,stu.ClassId,stu.SchoolId,stu.StudentType,cla.ClassName,stu.SectionId,stu.Email,stu.PhoneNumber,par.FathersName, COALESCE(stuFeeIns.RemainingAmount, null) AS RemainingAmount,
+                    var sql = new StringBuilder($@"select stu.Id,stu.StudentId,stu.SectionId,stu.Name,stu.ClassId,stu.SchoolId,stu.StudentType,cla.ClassName,sec.SectionName,stu.Email,stu.PhoneNumber,par.FathersName, COALESCE(stuFeeIns.RemainingAmount, null) AS RemainingAmount,
                     par.MothersName,par.FathersMailId,par.MothersMailId,par.FathersMobileNumber,par.MothersMobileNumber,par.FathersOccupation,par.MothersOccupation 
                     from Student stu left join parent par on par.ParentId = stu.ParentId left join Class cla on cla.ClassId = stu.ClassId 
-				    left join StudentFeeInstallment stuFeeIns on stuFeeIns.StudentId = stu.StudentId
+				    left join StudentFeeInstallment stuFeeIns on stuFeeIns.StudentId = stu.StudentId left join Section sec on sec.SectionId=stu.SectionId
                     where stu.IsActive=1 and stu.SchoolId={schoolid}");
                     allData = connection.Query<StudentViewModel>(sql.ToString()).ToList();
 
                     StudentRecord.Rows.Clear();
 
+                    var studentTypeMapping = new Dictionary<int, string>
+                    {
+                        { 1, "Deskcolor" },
+                        { 2, "Hosteler" }
+                    };
+
                     foreach (var item in allData)
                     {
-                        StudentRecord.Rows.Add(item.StudentId, item.Name, item.ClassId, item.SchoolId, item.StudentType, item.ClassName, item.SectionId, item.Email, item.PhoneNumber, item.FathersName, item.MothersName, item.FathersMobileNumber, item.MothersMobileNumber, item.RemainingAmount);
-
+                        if (int.TryParse(item.StudentType, out int studentTypeValue))
+                        {
+                            var studentTypeName = studentTypeMapping.ContainsKey(studentTypeValue)
+                                ? studentTypeMapping[studentTypeValue]
+                                : "Unknown";
+                            StudentRecord.Rows.Add(item.Id, item.StudentId, item.SectionId, item.Name, item.ClassId, studentTypeName, item.ClassName, item.SectionName, item.Email, item.PhoneNumber, item.FathersName, item.MothersName, item.FathersMobileNumber, item.MothersMobileNumber, item.RemainingAmount);
+                        }
                     }
 
                     StudentRecord.AutoGenerateColumns = false;
@@ -202,17 +214,80 @@ namespace SchoolManagement
             }
         }
 
+        private void StudentRecord_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EditStaffViewModel.Id = 0;
+            EditStaffViewModel.SchoolId = 0;
+            EditStaffViewModel.ParentId = "";
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.ColumnIndex < StudentRecord.Columns.Count && StudentRecord.Columns[e.ColumnIndex].HeaderText == "Edit")
+            {
+                Id = Convert.ToInt32(StudentRecord.Rows[e.RowIndex].Cells["IdColumn"].Value);
+                schoolid = Convert.ToInt32(StudentRecord.Rows[e.RowIndex].Cells["SchoolIdColumn"].Value);
+                studentid = StudentRecord.Rows[e.RowIndex].Cells["StudentIdColumn"].Value.ToString();
+                EditStaffViewModel.Id = Id;
+                EditStaffViewModel.SchoolId = schoolid;
+                EditStaffViewModel.StudentId = studentid;
+                if (Id != null && Id != 0 && schoolid != 0 && studentid != "")
+                {
+                    Students form = new Students();
+                    form.TopLevel = false;
+                    Application.OpenForms.OfType<MainLayoutForm>().First().MainPanel.Dock = DockStyle.Fill;
+                    Application.OpenForms.OfType<MainLayoutForm>().First().MainPanel.Controls.Add(form);
+                    form.BringToFront();
+                    form.Show();
+                }
+            }
+
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.ColumnIndex < StudentRecord.Columns.Count && StudentRecord.Columns[e.ColumnIndex].HeaderText == "Delete")
+            {
+                Id = Convert.ToInt32(StudentRecord.Rows[e.RowIndex].Cells["IdColumn"].Value);
+                DialogResult result = MessageBox.Show("Are you sure you want to delete", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    var entityToDelete = Db.Students.Find(Id);
+
+                    if (entityToDelete != null)
+                    {
+                        entityToDelete.Isdelete = true;
+                        entityToDelete.IsActive = false;
+                        Db.SaveChanges();
+
+                        studentrecord();
+
+                        MessageBox.Show("Record deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Record not found or failed to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
         private void UpdateDataGridView()
         {
             StudentRecord.Rows.Clear();
 
             var currentPageData = allData?.Skip(currentPage * pageSize).Take(pageSize).ToList();
 
+            var studentTypeMapping = new Dictionary<int, string>
+            {
+                { 1, "Deskcolor" },
+                { 2, "Hosteler" }
+            };
+
             foreach (var item in currentPageData)
             {
-                StudentRecord.Rows.Add(item.StudentId, item.Name, item.ClassId, item.SchoolId, item.StudentType, item.ClassName, item.SectionId, item.Email, item.PhoneNumber, item.FathersName, item.MothersName, item.FathersMobileNumber, item.MothersMobileNumber, item.RemainingAmount);
-            }
+                if (int.TryParse(item.StudentType, out int studentTypeValue))
+                {
+                    var studentTypeName = studentTypeMapping.ContainsKey(studentTypeValue)
+                        ? studentTypeMapping[studentTypeValue]
+                        : "Unknown";
+                    StudentRecord.Rows.Add(item.Id, item.StudentId, item.SectionId, item.Name, item.ClassId, item.SchoolId, studentTypeName, item.ClassName, item.SectionName, item.Email, item.PhoneNumber, item.FathersName, item.MothersName, item.FathersMobileNumber, item.MothersMobileNumber, item.RemainingAmount);
 
+                }
+            }
             StudentDetail();
 
             previousBtn.Enabled = currentPage > 0;
@@ -241,5 +316,87 @@ namespace SchoolManagement
 
         private int TotalPages => allData != null ? (int)Math.Ceiling((double)allData.Count / pageSize) : 0;
 
+
+        private void UpdateDataGridView(List<StudentViewModel> data = null)
+        {
+            StudentRecord.Rows.Clear();
+
+            var sourceData = data ?? allData.Skip(currentPage * pageSize).Take(pageSize).ToList();
+
+            var studentTypeMapping = new Dictionary<int, string>
+            {
+                { 1, "Deskcolor" },
+                { 2, "Hosteler" }
+            };
+
+            foreach (var item in sourceData)
+            {
+                if (int.TryParse(item.StudentType, out int studentTypeValue))
+                {
+                    var studentTypeName = studentTypeMapping.ContainsKey(studentTypeValue)
+                        ? studentTypeMapping[studentTypeValue]
+                        : "Unknown";
+                    StudentRecord.Rows.Add(
+                    item.Id,
+                    item.StudentId,
+                    item.SectionId,
+                    item.Name,
+                    item.ClassId,
+                    item.SchoolId,
+                    studentTypeName,
+                    item.ClassName,
+                    item.SectionName,
+                    item.Email,
+                    item.PhoneNumber,
+                    item.FathersName,
+                    item.MothersName,
+                    item.FathersMobileNumber,
+                    item.MothersMobileNumber,
+                    item.RemainingAmount
+                    );
+                }
+            }
+
+            StudentDetail();
+
+            if (data == null)
+            {
+                previousBtn.Enabled = currentPage > 0;
+                nextBtn.Enabled = currentPage < TotalPages - 1;
+                btnBetweenPg.Text = $"Pages: {currentPage + 1} / {TotalPages}";
+            }
+        }
+
+        private void Search_Enter(object sender, EventArgs e)
+        {
+            if (Search.Text == "Enter Student Name")
+            {
+                Search.Text = string.Empty;
+            }
+        }
+
+        private void Search_Leave(object sender, EventArgs e)
+        {
+            if (Search.Text == "")
+            {
+                Search.Text = "Enter Student Name";
+            }
+        }
+
+        private void Search_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(Search.Text) || Search.Text == "Enter Student Name")
+            {
+                UpdateDataGridView();
+            }
+            else
+            {
+                var filteredData = allData.Where(x => x.Name.IndexOf(Search.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+
+                UpdateDataGridView(filteredData);
+            }
+
+            StudentRecord.Refresh();
+        }
     }
 }

@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainLayoutForm));
             this.UserPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.Teacher_Staff = new System.Windows.Forms.Button();
             this.userclick = new System.Windows.Forms.Button();
             this.Student = new System.Windows.Forms.Button();
-            this.Teacher_Staff = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.Acedmic = new System.Windows.Forms.Button();
             this.Daily_attandance = new System.Windows.Forms.Button();
@@ -51,6 +51,7 @@
             this.Dashboard = new System.Windows.Forms.Button();
             this.HeaderPanel = new Krypton.Toolkit.KryptonPanel();
             this.MainPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.BiomatricAttendance = new System.Windows.Forms.Button();
             this.kryptonContextMenu1 = new Krypton.Toolkit.KryptonContextMenu();
             this.menutransition = new System.Windows.Forms.Timer(this.components);
             this.AcedmicTransition = new System.Windows.Forms.Timer(this.components);
@@ -70,11 +71,32 @@
             this.UserPanel.Controls.Add(this.userclick);
             this.UserPanel.Controls.Add(this.Student);
             this.UserPanel.Controls.Add(this.Teacher_Staff);
+            this.UserPanel.Controls.Add(this.BiomatricAttendance);
             this.UserPanel.Location = new System.Drawing.Point(0, 106);
             this.UserPanel.Margin = new System.Windows.Forms.Padding(0);
             this.UserPanel.Name = "UserPanel";
             this.UserPanel.Size = new System.Drawing.Size(270, 50);
             this.UserPanel.TabIndex = 2;
+            // 
+            // Teacher_Staff
+            // 
+            this.Teacher_Staff.BackColor = System.Drawing.Color.White;
+            this.Teacher_Staff.FlatAppearance.BorderSize = 0;
+            this.Teacher_Staff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Teacher_Staff.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Teacher_Staff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(74)))), ((int)(((byte)(93)))));
+            this.Teacher_Staff.Image = ((System.Drawing.Image)(resources.GetObject("Teacher_Staff.Image")));
+            this.Teacher_Staff.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Teacher_Staff.Location = new System.Drawing.Point(0, 100);
+            this.Teacher_Staff.Margin = new System.Windows.Forms.Padding(0);
+            this.Teacher_Staff.Name = "Teacher_Staff";
+            this.Teacher_Staff.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.Teacher_Staff.Size = new System.Drawing.Size(270, 50);
+            this.Teacher_Staff.TabIndex = 5;
+            this.Teacher_Staff.Text = "  Teacher/Staff";
+            this.Teacher_Staff.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Teacher_Staff.UseVisualStyleBackColor = false;
+            this.Teacher_Staff.Click += new System.EventHandler(this.Teacher_Staff_Click);
             // 
             // userclick
             // 
@@ -118,26 +140,6 @@
             this.Student.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Student.UseVisualStyleBackColor = false;
             this.Student.Click += new System.EventHandler(this.Student_Click);
-            // 
-            // Teacher_Staff
-            // 
-            this.Teacher_Staff.BackColor = System.Drawing.Color.White;
-            this.Teacher_Staff.FlatAppearance.BorderSize = 0;
-            this.Teacher_Staff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Teacher_Staff.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Teacher_Staff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(74)))), ((int)(((byte)(93)))));
-            this.Teacher_Staff.Image = ((System.Drawing.Image)(resources.GetObject("Teacher_Staff.Image")));
-            this.Teacher_Staff.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Teacher_Staff.Location = new System.Drawing.Point(0, 100);
-            this.Teacher_Staff.Margin = new System.Windows.Forms.Padding(0);
-            this.Teacher_Staff.Name = "Teacher_Staff";
-            this.Teacher_Staff.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
-            this.Teacher_Staff.Size = new System.Drawing.Size(270, 50);
-            this.Teacher_Staff.TabIndex = 5;
-            this.Teacher_Staff.Text = "  Teacher/Staff";
-            this.Teacher_Staff.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Teacher_Staff.UseVisualStyleBackColor = false;
-            this.Teacher_Staff.Click += new System.EventHandler(this.Teacher_Staff_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -462,6 +464,27 @@
             this.MainPanel.Size = new System.Drawing.Size(865, 591);
             this.MainPanel.TabIndex = 0;
             // 
+            // BiomatricAttendance
+            // 
+            this.BiomatricAttendance.BackColor = System.Drawing.Color.White;
+            this.BiomatricAttendance.FlatAppearance.BorderSize = 0;
+            this.BiomatricAttendance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BiomatricAttendance.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BiomatricAttendance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(74)))), ((int)(((byte)(93)))));
+            this.BiomatricAttendance.Image = ((System.Drawing.Image)(resources.GetObject("BiomatricAttendance.Image")));
+            this.BiomatricAttendance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BiomatricAttendance.Location = new System.Drawing.Point(0, 150);
+            this.BiomatricAttendance.Margin = new System.Windows.Forms.Padding(0);
+            this.BiomatricAttendance.Name = "BiomatricAttendance";
+            this.BiomatricAttendance.Padding = new System.Windows.Forms.Padding(11, 0, 0, 0);
+            this.BiomatricAttendance.Size = new System.Drawing.Size(270, 50);
+            this.BiomatricAttendance.TabIndex = 5;
+            this.BiomatricAttendance.Text = "  Staff Biomatric Attendance ";
+            this.BiomatricAttendance.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BiomatricAttendance.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.BiomatricAttendance.UseVisualStyleBackColor = false;
+            this.BiomatricAttendance.Click += new System.EventHandler(this.BiomatricAttendance_Click);
+            // 
             // menutransition
             // 
             this.menutransition.Tick += new System.EventHandler(this.menutransition_Tick);
@@ -524,5 +547,6 @@
         private System.Windows.Forms.Timer AcedmicTransition;
         private System.Windows.Forms.Timer AccountingTransition;
         private System.Windows.Forms.Button Event_Calender;
+        private System.Windows.Forms.Button BiomatricAttendance;
     }
 }

@@ -214,6 +214,32 @@
         IzJ3ky6vQdqaDjJQnBizhsHGU337xy1qcA0hzxOmVf0T8H9SAwb8BsVdjgrsSXxLAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="BiomatricAttendance.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        wQAADsEBuJFr7QAABL5JREFUSEvtVllMXFUYRvFB44OpL76pic9qwUTbGI1bUasGY0wLdStKUfQBkLbQ
+        qhFaWlqhNZRhGSi0UNZhmWHYy9bCMMDcgQ4DlH0dlmFfWtZh5vP8hzukFgSEJn3pl5zk+8895//Ov5x7
+        r80jPHRIFDVvR+fUplXpjc+RHaYQglNKG72Jh+fod0nkmtLKpm47bsuFQ1cKdNE63dDTZO8IErn2MHMG
+        TXO/C9lhcuGmUt1qlgG2IZnCS+wgUDcZrvBnWZrTSSUNqG4deIvsbcHvarnz12cyWjwlBdNBKWocCsiY
+        PuifZgxMVC36SItw0D/dePicYpSEvwtUzNEz36jiuwHXyuF8On3C5byiMlQuvCy62xqkSu3zn/omml5z
+        k+KT4/HwluSBOA2PkBw4nkjgfM9PUgQmlMPeNZzbTn4pcAuSr649EqzsqtD37hLdbo4wpeCw95fLfLP9
+        kQjs/l6y6oy4vWvEqv2qy6VVbscOYPdD2Kr95Z8yVDYYPES3myNcrv1w788rwjTe8byKA35pWxpvuEf/
+        S7iqyeAvut0c9wu/67V14T337NuWsFdYATxC83c0fo8p/f/CC0vL6DFOobZtCCOTsxibnuW8e2gS84sm
+        zhu6hkGo7xxGHbMX2Z7OgQn+bHxmDh2Mb0u4UOgEXZdb7UbomXPieTXtGJma5Twm7xYXlmbXcnvyzjzY
+        Hee8qWd0+8IUnbZ1kEc8ysSIdw2uREycDkPQdRi5TRGTGPHx6R1ETKmkqHuHp4DbRbBEOcFSHII7c4t8
+        /oauhwuX1nVze27BBKFlEPT2ulnfA03LwM5TjZIQwM0GCP983VT/nV4Nv6s38P6vcbybvwrIwL6j8djv
+        k9h/MrrIjS17THT/37AKj7F0UYNRhJgwAPpcwKCDadnM5/tHZ7hwfacRHx9P4F1Maab1LFJMzMwjQqmF
+        w9FrOBFVHLupuFVY3WhAYnEDWvrG0N4/znmFvo83EfHMimYu/O1ZOS6mVbFUL/G6WiwWFNd2gXxQl9e1
+        D+ED73hEZgnuosT6WC/VelZv4tTV1GjWVDf1jMDxt2TkVrXBbLbwg5iZMNlWlNR1ISSjGj9eyDbIZDJb
+        UWYtrMLUvVN3F7BkMvP0Eqc55pdzSmlMXh3+Sq4UJVawbDYjm12re3G7d5TVOwFVesMrosxaWIWva1ci
+        putCHU48v6aDv0yIx+brEJRSiUhWR6qpFRTdAT8ZX0eYnV+CQtWC97zioGrodRBl1uJSlvAmRUPXJZbS
+        2T2C5t4xzunqUNMQTy5pBPs7QXCqmgtYQdkR2FWiHogr1PE56hNqQFVj/25RZi1kMtiq9L3Vi6Zlvmkj
+        6FlHf/FHKq+9tcb3g2pMGWLf56GysrInRJn1UVLb9UJudZu2UOhgTbbxcD6VjnDmmMrDXzYiltjB+5jd
+        yDK2j3V1qFzjKbrfHGVl3U+q1X1PbTQcfZJffN09uoN+e2rbBnlNqebTswu4nFuHj1iKfaTFKewsj4tu
+        HwwupKqfPZ+sCnE6lW6hb/c3ZzLhGqTEft9EfHYyCWcTKowRrG/E5Q8OUpn2GUmm5phEIaRcTKuuYD+D
+        9cciruvPJak04VlCDqtvcKRSsBeXP8LDgI3NPwLcpiffpNF2AAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="Acedmic.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
@@ -405,7 +431,7 @@
   <data name="Event_Calender.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wQAADsEBuJFr7QAABL5JREFUSEvtVllMXFUYRvFB44OpL76pic9qwUTbGI1bUasGY0wLdStKUfQBkLbQ
+        vgAADr4B6kKxwAAABL5JREFUSEvtVllMXFUYRvFB44OpL76pic9qwUTbGI1bUasGY0wLdStKUfQBkLbQ
         qhFaWlqhNZRhGSi0UNZhmWHYy9bCMMDcgQ4DlH0dlmFfWtZh5vP8hzukFgSEJn3pl5zk+8895//Ov5x7
         r80jPHRIFDVvR+fUplXpjc+RHaYQglNKG72Jh+fod0nkmtLKpm47bsuFQ1cKdNE63dDTZO8IErn2MHMG
         TXO/C9lhcuGmUt1qlgG2IZnCS+wgUDcZrvBnWZrTSSUNqG4deIvsbcHvarnz12cyWjwlBdNBKWocCsiY

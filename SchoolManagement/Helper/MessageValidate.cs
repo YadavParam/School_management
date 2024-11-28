@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SchoolManagement.Helper
 {
-   public class MessageValidate
+    public class MessageValidate
     {
         public string Message { get; set; }
         public bool Status { get; set; }
@@ -15,7 +15,7 @@ namespace SchoolManagement.Helper
     public class Parentdetails
     {
         public string ParentId { get; set; }
-       public string SchoolId { get; set; }
+        public string SchoolId { get; set; }
 
-}
+    }
 }

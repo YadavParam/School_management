@@ -1,4 +1,6 @@
-﻿using DocumentFormat.OpenXml.Wordprocessing;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using DocumentFormat.OpenXml.Wordprocessing;
+using SchoolManagement.Accounting;
 using SchoolManagement.Helper;
 using SchoolManagement.Model;
 using System;
@@ -20,7 +22,11 @@ namespace SchoolManagement.Users
         private int pageSize = 25;
         private int currentPage = 0;
         private int totalRecords = 0;
+        private int Id;
+        private int schoolId;
+        private string parentId;
         SchoolManagementEntities1 Db = new SchoolManagementEntities1();
+        Form form;
         public ParentDetails()
         {
             InitializeComponent();
@@ -64,6 +70,59 @@ namespace SchoolManagement.Users
             UpdateDataGridView();
         }
 
+        private void ParentRecord_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EditStaffViewModel.Id = 0;
+            EditStaffViewModel.SchoolId = 0;
+            EditStaffViewModel.ParentId = "";
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.ColumnIndex < ParentRecord.Columns.Count && ParentRecord.Columns[e.ColumnIndex].HeaderText == "Edit")
+            {
+                Id = Convert.ToInt32(ParentRecord.Rows[e.RowIndex].Cells["IdColumn"].Value);
+                schoolId = Convert.ToInt32(ParentRecord.Rows[e.RowIndex].Cells["SchoolIdColumn"].Value);
+                parentId = ParentRecord.Rows[e.RowIndex].Cells["ParentIdColumn"]?.Value.ToString();
+                EditStaffViewModel.Id = Id;
+                EditStaffViewModel.SchoolId = schoolId;
+                EditStaffViewModel.ParentId= parentId;
+                if (Id != null && Id != 0 && schoolId != null && schoolId != 0 && parentId != "")
+                {
+                    Parents form = new Parents();
+                    form.TopLevel = false;
+                    Application.OpenForms.OfType<MainLayoutForm>().First().MainPanel.Dock = DockStyle.Fill;
+                    Application.OpenForms.OfType<MainLayoutForm>().First().MainPanel.Controls.Add(form);
+                    form.BringToFront();
+                    form.Show();
+                }
+            }
+
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0 && e.ColumnIndex < ParentRecord.Columns.Count && ParentRecord.Columns[e.ColumnIndex].HeaderText == "Delete")
+            {
+                Id = Convert.ToInt32(ParentRecord.Rows[e.RowIndex].Cells["IdColumn"].Value);
+                schoolId = Convert.ToInt32(ParentRecord.Rows[e.RowIndex].Cells["SchoolIdColumn"].Value);
+                DialogResult result = MessageBox.Show("Are you sure you want to delete", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    var entityToDelete = Db.Parents.Find(Id);
+
+                    if (entityToDelete != null)
+                    {
+
+                        entityToDelete.IsActive = false;
+                        entityToDelete.IsDelete = true;
+                        Db.SaveChanges();
+
+                        DataOfParentDetails(1, pageSize);
+
+                        MessageBox.Show("Record deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Record not found or failed to delete.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
         private void UpdateDataGridView()
         {
             var currentPageData = allData?.Skip(currentPage * pageSize).Take(pageSize).ToList();
@@ -93,6 +152,39 @@ namespace SchoolManagement.Users
                 currentPage++;
                 UpdateDataGridView();
             }
+        }
+
+        private void Search_Enter(object sender, EventArgs e)
+        {
+            if (Search.Text == "Enter Parent's Name")
+            {
+                Search.Text = string.Empty;
+            }
+        }
+
+        private void Search_Leave(object sender, EventArgs e)
+        {
+            if (Search.Text == "")
+            {
+                Search.Text = "Enter Parent's Name";
+            }
+        }
+
+        private void Search_TextChanged(object sender, EventArgs e)
+        {
+            if (Search.Text == "" || Search.Text == "Enter Parent's Name")
+            {
+                ParentRecord.DataSource = allData;
+            }
+            else
+            {
+                var filteredData = allData.Where(x => x.FathersName.IndexOf(Search.Text, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                                                 x.MothersName.IndexOf(Search.Text, StringComparison.OrdinalIgnoreCase) >= 0).ToList();
+
+                ParentRecord.DataSource = filteredData;
+            }
+
+            ParentRecord.Refresh();
         }
     }
 }

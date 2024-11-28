@@ -13,6 +13,7 @@ namespace SchoolManagement.Helper
         public static int SchoolId { get; set; }
         public static string SectionId { get; set; }
         public static string StudentId { get; set; }
-
+        public static string ParentId { get; set; }
+        public static int UserId { get; set; }
     }
 }
