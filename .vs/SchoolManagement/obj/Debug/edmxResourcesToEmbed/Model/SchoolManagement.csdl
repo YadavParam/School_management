@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SchoolManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Class">
+    <Key>
+      <PropertyRef Name="ClassId" />
+    </Key>
+    <Property Name="ClassId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClassName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Isdelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Class_Section">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="SectionId" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SectionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ClassName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+    <Property Name="StreamId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ClassPeriodAcademic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="Period" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="SectionId" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="SubjectId" Type="Int32" />
+    <Property Name="TeacherId" Type="Int32" />
+    <Property Name="ClassTeacher" Type="Int32" />
+    <Property Name="TimingFrom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TimingTo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Duration" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ClassRoutineAcademic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="SubjectId" Type="Int32" />
+    <Property Name="SectionId" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="TeacherId" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Parent">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SchoolId" Type="Int32" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FathersName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="MothersName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="FathersMailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MothersMailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoOfChildren" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="FathersMobileNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="MothersMobileNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="FathersOccupation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MothersOccupation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FathersBloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MothersBloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SchoolDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="Pan" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="UserType" Type="Int32" />
+    <Property Name="SchoolName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SchoolWebsite" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SchoolGst" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SchoolLandline" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="SchoolAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+    <Property Name="PlanExpiryDate" Type="DateTime" Precision="3" />
+    <Property Name="PlanDays" Type="Int32" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PlanId" Type="Int32" />
+    <Property Name="NumberOfUsers" Type="Int32" />
+    <Property Name="PlanAmount" Type="Int32" />
+    <Property Name="IsOtpVarified" Type="Boolean" />
+    <Property Name="CompanyUID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Section">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SectionId" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="SectionName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StreamId" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="TypeStatus" Type="Boolean" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+    <Property Name="StreamName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="ClassId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Stream">
+    <Key>
+      <PropertyRef Name="StramId" />
+    </Key>
+    <Property Name="StramId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="StreamName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Isdelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Subject">
+    <Key>
+      <PropertyRef Name="SubjectId" />
+    </Key>
+    <Property Name="SubjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="ClassName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SubjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MenuRights" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UserType" Type="Int32" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="ForgotPasswordCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+    <Property Name="OTPCode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsOTPVerified" Type="Boolean" />
+    <Property Name="OTPVerifiedValidDate" Type="DateTime" Precision="3" />
+    <Property Name="SchoolUser" Type="Int32" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="UserSubscriptionPlanDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="PlanId" Type="Int32" />
+    <Property Name="UserEmailId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Int32" />
+    <Property Name="TransactionID" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ExpiryDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="SchoolManagementEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Classes" EntityType="Self.Class" />
+    <EntitySet Name="Class_Section" EntityType="Self.Class_Section" />
+    <EntitySet Name="ClassPeriodAcademics" EntityType="Self.ClassPeriodAcademic" />
+    <EntitySet Name="ClassRoutineAcademics" EntityType="Self.ClassRoutineAcademic" />
+    <EntitySet Name="Parents" EntityType="Self.Parent" />
+    <EntitySet Name="SchoolDetails" EntityType="Self.SchoolDetail" />
+    <EntitySet Name="Sections" EntityType="Self.Section" />
+    <EntitySet Name="Streams" EntityType="Self.Stream" />
+    <EntitySet Name="Subjects" EntityType="Self.Subject" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserSubscriptionPlanDetails" EntityType="Self.UserSubscriptionPlanDetail" />
+    <EntitySet Name="ClassTeacherAcademics" EntityType="SchoolManagementModel.ClassTeacherAcademic" />
+    <EntitySet Name="StudentFeeAccountings" EntityType="SchoolManagementModel.StudentFeeAccounting" />
+    <EntitySet Name="StudentFeeInstallments" EntityType="SchoolManagementModel.StudentFeeInstallment" />
+    <EntitySet Name="StudentInstallments" EntityType="SchoolManagementModel.StudentInstallment" />
+    <EntitySet Name="Expenses" EntityType="SchoolManagementModel.Expens" />
+    <EntitySet Name="Events" EntityType="SchoolManagementModel.Event" />
+    <EntitySet Name="SchoolStaffs" EntityType="SchoolManagementModel.SchoolStaff" />
+    <EntitySet Name="StudentAttendances" EntityType="SchoolManagementModel.StudentAttendance" />
+    <EntitySet Name="SatffAttendances" EntityType="SchoolManagementModel.SatffAttendance" />
+    <EntitySet Name="Students" EntityType="SchoolManagementModel.Student" />
+  </EntityContainer>
+  <EntityType Name="ClassTeacherAcademic">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="SectionId" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="ClassTeacher" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+    <Property Name="Period" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="StudentFeeAccounting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="YearFee" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Installment" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="StudentFeeInstallment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="StudentId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FeeAmount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FirstPayPayment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NegotiableAmount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TotalNoOfInstallment" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+    <Property Name="RemainingAmount" Type="Int32" />
+    <Property Name="SectionId" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="StudentInstallment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="StudentId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="InstallmentDate" Type="DateTime" Precision="3" />
+    <Property Name="DateOfPay" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+    <Property Name="PaidPayment" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RemainingAmount" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SectionId" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Expens">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="ExpenseCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Amount" Type="Double" />
+    <Property Name="ExpenseType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="EventTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="StartingDate" Type="DateTime" Precision="3" />
+    <Property Name="EndingDate" Type="DateTime" Precision="3" />
+    <Property Name="DescriptionSummary" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SchoolStaff">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="FirstName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="Salary" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="Experience" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="BankName" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="AccountNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IFSCCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BranchName" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="SubjectId" Type="Int32" />
+    <Property Name="Designation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+    <Property Name="JoiningDate" Type="DateTime" Precision="3" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="StudentAttendance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="StudentId" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="SectionId" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Attendance" Type="Int32" />
+    <Property Name="AttendanceDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="SatffAttendance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="SchoolId" Type="Int32" />
+    <Property Name="Attendance" Type="Int32" />
+    <Property Name="AttendanceDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudentId" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SchoolId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Name="StudentType" Type="Int32" />
+    <Property Name="ParentId" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="ClassId" Type="Int32" />
+    <Property Name="SectionId" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="Birthday" Type="DateTime" Precision="3" />
+    <Property Name="Gender" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="Isdelete" Type="Boolean" />
+    <Property Name="DateAdded" Type="DateTime" Precision="3" />
+    <Property Name="DateModified" Type="DateTime" Precision="3" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>
