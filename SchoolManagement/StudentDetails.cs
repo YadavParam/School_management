@@ -208,8 +208,11 @@ namespace SchoolManagement
                 EditStaffViewModel.StudentId = studentid;
                 EditStaffViewModel.SchoolId = schoolid;
 
-
                 frm = new StudentInvoice();
+                frm.TopLevel = false;
+                Application.OpenForms.OfType<MainLayoutForm>().First().MainPanel.Dock = DockStyle.Fill;
+                Application.OpenForms.OfType<MainLayoutForm>().First().MainPanel.Controls.Add(frm);
+                frm.BringToFront();
                 frm.Show();
             }
         }

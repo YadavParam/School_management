@@ -1,13 +1,7 @@
-﻿using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
-using CrystalDecisions.Windows.Forms;
-using Dapper;
-using SchoolManagement.Accounting.IM_CrystalReports;
+﻿using Dapper;
 using SchoolManagement.Helper;
 using SchoolManagement.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -15,11 +9,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
+using SchoolManagement.Accounting.IM_CrystalReports;
+using System.Collections.Generic;
+using CrystalDecisions.Shared;
+using CrystalDecisions.CrystalReports.Engine;
 
 namespace SchoolManagement.Accounting
 {
     public partial class StudentInvoice : Form
     {
+        private int SchoolId;
+        private string StudentId;
         private static readonly string ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["SchoolManagementConnectionString"].ConnectionString;
         protected SqlConnection Con = new SqlConnection(ConnectionString);
 
@@ -28,88 +29,94 @@ namespace SchoolManagement.Accounting
             InitializeComponent();
         }
 
-        private void crystalReportViewer_Load(object sender, EventArgs e)
-        {
-           
-        }
-
         private void StudentInvoice_Load(object sender, EventArgs e)
         {
-            string studentid = EditStaffViewModel.StudentId;
-            int schoolId = EditStaffViewModel.SchoolId;
-            //try
-            //{
-            //    var schoolid = schoolId;
-            //    FeeInvoiceCrystalReport cr = new FeeInvoiceCrystalReport();
+            SchoolId = EditStaffViewModel.SchoolId;
+            StudentId = EditStaffViewModel.StudentId;
 
-            //    using (var connection = new SqlConnection(ConnectionString))
-            //    {
+            StudentInvoices();
+        }
 
-            //        var sql = "FeeInvoice";
-            //        var properties = connection.Query<FeeInvoiceCrystalReportViewModel>(sql, new { SchoolId = schoolId, StudentId = studentid }, commandType: CommandType.StoredProcedure).ToList();
-
-
-            //        foreach (var item in properties)
-            //        {
-            //            cr.SetParameterValue("SchoolName", item.SchoolName);
-            //            cr.SetParameterValue("SchoolAddress", item.SchoolAddress);
-            //            cr.SetParameterValue("Email", item.Email);
-            //            cr.SetParameterValue("Phone", item.Phone);
-            //            cr.SetParameterValue("StudentName", item.Name);
-            //            cr.SetParameterValue("StudentAddress", item.Address);
-            //            cr.SetParameterValue("PhoneNumber", item.PhoneNumber);
-            //            cr.SetParameterValue("FatherName", item.FathersName);
-            //            cr.SetParameterValue("Class", item.ClassId);
-            //            cr.SetParameterValue("RollNumber", item.StudentId);
-            //            cr.SetParameterValue("TotalFee", item.FeeAmount);
-            //            cr.SetParameterValue("PaidPayment", item.FirstPayPayment);
-
-            //        }
-
-            //        crystalReportViewer.ReportSource = cr;
-            //        crystalReportViewer.Refresh();
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw ex;
-            //}
-
+        public void StudentInvoices()
+        {
             try
             {
-                FeeInvoiceCrystalReport cr = new FeeInvoiceCrystalReport();
+                InvoiceCrystalReport cr = new InvoiceCrystalReport();
+
+                try
+                {
+                    cr.Load(@"D:\schmament\schmament\SchoolManagement\Accounting\IM_CrystalReports\InvoiceCrystalReport.rpt");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error loading report: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (cr.DataDefinition == null)
+                {
+                    MessageBox.Show("Report DataDefinition is not initialized.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                
+                if (cr.DataDefinition.ParameterFields == null || cr.DataDefinition.ParameterFields.Count == 0)
+                {
+                    MessageBox.Show("No parameters found in the report.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 using (var connection = new SqlConnection(ConnectionString))
                 {
-
                     var sql = "FeeInvoice";
-                    var properties = connection.Query<FeeInvoiceCrystalReportViewModel>(sql, new { SchoolId = schoolId, StudentId = studentid }, commandType: CommandType.StoredProcedure).ToList();
+                    var properties = connection.Query<FeeInvoiceCrystalReportViewModel>( sql, new { SchoolId = SchoolId, StudentId = StudentId },
+                        commandType: CommandType.StoredProcedure ).ToList();
 
-                    foreach (var item in properties)
+                    if (properties.Count == 0)
                     {
-                        crystalReportViewer.ReportSource = cr;
-
-                        cr.SetParameterValue("SchoolName", item.SchoolName);
-                        cr.SetParameterValue("SchoolAddress", item.SchoolAddress);
-                        cr.SetParameterValue("Email", item.Email);
-                        cr.SetParameterValue("Phone", item.Phone);
-                        cr.SetParameterValue("StudentName", item.Name);
-                        cr.SetParameterValue("StudentAddress", item.Address);
-                        cr.SetParameterValue("PhoneNumber", item.PhoneNumber);
-                        cr.SetParameterValue("FatherName", item.FathersName);
-                        cr.SetParameterValue("Class", item.ClassId);
-                        cr.SetParameterValue("RollNumber", item.StudentId);
-                        cr.SetParameterValue("TotalFee", item.FeeAmount);
-                        cr.SetParameterValue("PaidPayment", item.FirstPayPayment);
-
-                        crystalReportViewer.Refresh();
+                        MessageBox.Show("No data found for the specified SchoolId and StudentId.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
                     }
+
+                    var item = properties.First();
+
+                    var parameterMappings = new Dictionary<string, object>
+                    {
+                         { "@SchoolId", SchoolId },
+                         { "SchoolName", item.SchoolName },
+                         { "SchoolAddress", item.SchoolAddress },
+                         { "Email", item.Email },
+                         { "Phone", item.Phone },
+                         { "StudentName", item.Name },
+                         { "StudentAddress", item.Address },
+                         { "PhoneNumber", item.PhoneNumber },
+                         { "FatherName", item.FathersName },
+                         { "Class", item.ClassId },
+                         { "@StudentId", item.StudentId },
+                         { "TotalFee", item.FeeAmount },
+                         { "PaidPayment", item.FirstPayPayment }
+                    };
+
+                    foreach (ParameterFieldDefinition parameter in cr.DataDefinition.ParameterFields)
+                    {
+                        if (parameterMappings.TryGetValue(parameter.Name, out var value))
+                        {
+                            cr.SetParameterValue(parameter.Name, value); 
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Parameter '{parameter.Name}' not recognized.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+
+                    crystalReportViewer.ReportSource = cr;
+                    crystalReportViewer.Refresh();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Something went wrong, if the problem continues, please contact Singhtek!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-
         }
     }
 }

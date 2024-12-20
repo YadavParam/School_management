@@ -189,7 +189,7 @@ namespace SchoolManagement
                                 //System.Threading.Tasks.Task.Factory.StartNew(() => UserMailer.SendEmailByMaster(adminmailer.Email, "CRM Signup", regStringHtml));
                                 loadingImage.Visible = false;
                                 message = "Success, Create Password link has been sent to your Email Address, success";
-                                MessageBox.Show("Successfully added record, registration has been done!, Password has been sent to your mail id and you can change your password link has been send.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("Successfully added record, registration has been done!, Password has been sent to your mail id and you can change your password link has been send.", "Alert", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                 this.Hide();
                                 frm = new Login();

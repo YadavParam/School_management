@@ -40,25 +40,26 @@
             this.crystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer.Name = "crystalReportViewer";
-            this.crystalReportViewer.ReportSource = "F:\\dataclone\\SchoolManagement\\SchoolManagement\\Accounting\\IM_CrystalReports\\FeeIn" +
-    "voiceCrystalReport.rpt";
             this.crystalReportViewer.ShowCloseButton = false;
             this.crystalReportViewer.ShowGroupTreeButton = false;
             this.crystalReportViewer.ShowLogo = false;
             this.crystalReportViewer.ShowParameterPanelButton = false;
-            this.crystalReportViewer.Size = new System.Drawing.Size(1162, 690);
+            this.crystalReportViewer.Size = new System.Drawing.Size(1149, 737);
             this.crystalReportViewer.TabIndex = 0;
-            this.crystalReportViewer.Load += new System.EventHandler(this.crystalReportViewer_Load);
             // 
             // StudentInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Gainsboro;
-            this.ClientSize = new System.Drawing.Size(1162, 690);
+            this.ClientSize = new System.Drawing.Size(1149, 737);
             this.Controls.Add(this.crystalReportViewer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "StudentInvoice";
             this.Text = "StudentInvoice";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.StudentInvoice_Load);
             this.ResumeLayout(false);
 

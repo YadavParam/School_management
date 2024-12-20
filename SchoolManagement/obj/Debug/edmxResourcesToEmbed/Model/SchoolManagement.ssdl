@@ -133,6 +133,20 @@
     <Property Name="DateAdded" Type="datetime" />
     <Property Name="DateModified" Type="datetime" />
   </EntityType>
+  <EntityType Name="SatffAttendance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="SchoolId" Type="int" />
+    <Property Name="Attendance" Type="int" />
+    <Property Name="AttendanceDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="DateAdded" Type="datetime" />
+    <Property Name="DateModified" Type="datetime" />
+  </EntityType>
   <EntityType Name="SchoolDetails">
     <Key>
       <PropertyRef Name="Id" />
@@ -236,29 +250,28 @@
     <Property Name="Gender" Type="varchar" MaxLength="200" />
     <Property Name="BloodGroup" Type="varchar" MaxLength="10" />
     <Property Name="Address" Type="varchar(max)" />
-    <Property Name="Image" Type="varchar(max)" />
+    <Property Name="Image" Type="image" />
     <Property Name="IsActive" Type="bit" />
     <Property Name="Isdelete" Type="bit" />
     <Property Name="DateAdded" Type="datetime" />
     <Property Name="DateModified" Type="datetime" />
     <Property Name="Password" Type="varchar(max)" />
   </EntityType>
-  <EntityType Name="StudentAttandance">
+  <EntityType Name="StudentAttendance">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SchoolId" Type="int" />
     <Property Name="StudentId" Type="varchar" MaxLength="200" />
-    <Property Name="Attandance" Type="int" />
-    <Property Name="AttandanceDate" Type="datetime" />
-    <Property Name="Isactive" Type="bit" />
-    <Property Name="Isdelete" Type="bit" />
-    <Property Name="DateAdded" Type="datetime" />
-    <Property Name="DateModified" Type="datetime" />
-    <Property Name="Note" Type="varchar(max)" />
     <Property Name="ClassId" Type="int" />
     <Property Name="SectionId" Type="varchar" MaxLength="2000" />
+    <Property Name="Attendance" Type="int" />
+    <Property Name="AttendanceDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="DateAdded" Type="datetime" />
+    <Property Name="DateModified" Type="datetime" />
   </EntityType>
   <EntityType Name="StudentFeeAccounting">
     <Key>
@@ -326,16 +339,6 @@
     <Property Name="DateAdded" Type="datetime" />
     <Property Name="DateModified" Type="datetime" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="UserId" />
@@ -384,17 +387,17 @@
     <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Expenses" EntityType="Self.Expenses" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Parent" EntityType="Self.Parent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SatffAttendance" EntityType="Self.SatffAttendance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SchoolDetails" EntityType="Self.SchoolDetails" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SchoolStaff" EntityType="Self.SchoolStaff" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Streams" EntityType="Self.Streams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="StudentAttandance" EntityType="Self.StudentAttandance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudentAttendance" EntityType="Self.StudentAttendance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StudentFeeAccounting" EntityType="Self.StudentFeeAccounting" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StudentFeeInstallment" EntityType="Self.StudentFeeInstallment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StudentInstallment" EntityType="Self.StudentInstallment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Subject" EntityType="Self.Subject" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserSubscriptionPlanDetails" EntityType="Self.UserSubscriptionPlanDetails" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
