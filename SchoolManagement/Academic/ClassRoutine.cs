@@ -193,6 +193,7 @@ namespace SchoolManagement.Academic
             {
                 if (Submit.Text == "Submit")
                 {
+
                     SubjectClassDropdlist selectedClass = (SubjectClassDropdlist)classSelect?.SelectedItem;
                     SubjectClassDropdlist selectedSubject = (SubjectClassDropdlist)subjectSelect?.SelectedItem;
                     SubjectClassDropdlist selectedTeacher = (SubjectClassDropdlist)teacherSelect?.SelectedItem;
